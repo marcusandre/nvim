@@ -2,9 +2,6 @@ return {
   {
     'stevearc/conform.nvim',
     config = function()
-      require('conform.formatters.stylua').require_cwd = true
-      require('conform.formatters.eslint_d').require_cwd = true
-
       require('conform').setup({
         formatters_by_ft = {
           lua = { 'stylua' },
@@ -21,9 +18,9 @@ return {
           stylua = {
             require_cwd = true,
           },
-          eslint_d = {
-            require_cwd = true,
-          },
+          -- eslint_d = {
+          --   require_cwd = true,
+          -- },
         },
       })
 
