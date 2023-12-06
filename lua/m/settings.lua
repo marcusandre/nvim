@@ -42,7 +42,7 @@ if vim.fn.exists("syntax_on") ~= 1 then vim.cmd([[syntax enable]]) end
 vim.o.ignorecase  = true                        -- Ignore case when searching
 vim.o.incsearch   = true                        -- Show search results while typing
 vim.o.infercase   = true                        -- Infer letter caases for a richer built-in keyword completion
-vim.o.smartcase   = true                        -- Don't ignore case whens searching with capiral letters
+vim.o.smartcase   = true                        -- Don't ignore case when searching with capital letters
 vim.o.smartindent = true                        -- Make indenting smart
 vim.o.autoindent  = true                        -- Use auto indent
 vim.opt.iskeyword:append('-')                   -- Treat dash separated words as a word text object

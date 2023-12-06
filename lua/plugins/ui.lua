@@ -1,16 +1,23 @@
 return {
+  -- {
+  --   'folke/tokyonight.nvim',
+  --   lazy = false,
+  --   priority = 1000,
+  --   init = function() vim.cmd.colorscheme('tokyonight') end,
+  --   opts = {
+  --     style = 'storm',
+  --     sidebars = {},
+  --     styles = {
+  --       keywords = { italic = false },
+  --     },
+  --   },
+  -- },
   {
-    'folke/tokyonight.nvim',
+    'catppuccin/nvim',
+    name = 'catppuccin',
     lazy = false,
     priority = 1000,
-    init = function() vim.cmd.colorscheme('tokyonight') end,
-    opts = {
-      style = 'storm',
-      sidebars = {},
-      styles = {
-        keywords = { italic = false },
-      },
-    },
+    config = function() vim.cmd.colorscheme('catppuccin') end,
   },
   {
     'lukas-reineke/indent-blankline.nvim',

@@ -13,7 +13,7 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require('lazy').setup({
   spec = { { import = 'plugins' } },
-  install = { colorscheme = { 'tokyonight' } },
+  install = { colorscheme = { 'tokyonight', 'catppuccin' } },
   change_detection = { notify = false },
   performance = {
     rtp = {
