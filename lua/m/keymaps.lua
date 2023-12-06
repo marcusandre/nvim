@@ -7,6 +7,10 @@ vim.keymap.set('n', 'J', 'mzJ`z')
 vim.keymap.set('n', 'Q', '<nop>')
 vim.keymap.set('n', 'n', 'nzz')
 
+-- Completions
+vim.keymap.set('i', '<Tab>', [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true })
+vim.keymap.set('i', '<S-Tab>', [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { expr = true })
+
 -- Buffers
 vim.keymap.set('n', '<leader>ba', '<Cmd>b#<CR>', { desc = 'Alternate' })
 vim.keymap.set('n', '<leader>bd', utils.delete_buffer, { desc = 'Delete' })
