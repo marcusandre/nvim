@@ -66,6 +66,7 @@ return {
       { mode = 'n', keys = '<Leader>o', desc = '+Other' },
       { mode = 'n', keys = '<Leader>p', desc = '+Pick' },
       { mode = 'n', keys = '<Leader>t', desc = '+Terminal/Test' },
+      { mode = 'n', keys = '<Leader>v', desc = '+Visits' },
       { mode = 'x', keys = '<Leader>l', desc = '+LSP' },
     }
 
@@ -217,5 +218,8 @@ return {
 
     -- mini.trailspace
     require('mini.trailspace').setup()
+
+    -- mini.visits
+    require('mini.visits').setup()
   end,
 }

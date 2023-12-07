@@ -7,4 +7,4 @@ vim.keymap.set(
   { desc = 'Symbols (Workspace)' }
 )
 
-vim.keymap.set('n', '<leader>fF', utils.find_files_without_spec, { desc = 'foo' })
+vim.keymap.set('n', '<leader>fF', utils.find_files_without_spec, { desc = 'Files (No spec)' })
