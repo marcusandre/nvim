@@ -1,8 +1,10 @@
 return {
   {
     'stevearc/conform.nvim',
+    event = { 'LspAttach', 'BufWrite' },
     config = function()
       require('conform').setup({
+        notify_on_error = false,
         formatters_by_ft = {
           lua = { 'stylua' },
           javascript = { { 'eslint_d' } },
@@ -18,9 +20,6 @@ return {
           stylua = {
             require_cwd = true,
           },
-          -- eslint_d = {
-          --   require_cwd = true,
-          -- },
         },
       })
 
@@ -44,5 +43,10 @@ return {
         client.server_capabilities.documentRangeFormattingProvider = false
       end,
     },
+  },
+  {
+    'b0o/SchemaStore.nvim',
+    version = false,
+    lazy = true,
   },
 }

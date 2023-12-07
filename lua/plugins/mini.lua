@@ -11,6 +11,8 @@ return {
     local gen_ai_spec = extra.gen_ai_spec
 
     ai.setup({
+      n_lines = 300,
+      search_method = 'cover',
       custom_textobjects = {
         a = ai.gen_spec.treesitter({
           a = '@parameter.outer',
@@ -140,10 +142,12 @@ return {
     })
 
     vim.api.nvim_create_autocmd('User', {
+      desc = 'Add minifiles keymaps',
       pattern = 'MiniFilesBufferCreate',
       callback = function(event)
+        local buf_id = event.data.buf_id
         vim.keymap.set('n', 'gY', utils.yank_reative_path, {
-          buffer = event.data.buf_id,
+          buffer = buf_id,
         })
       end,
     })

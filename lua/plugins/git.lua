@@ -30,4 +30,19 @@ return {
       })
     end,
   },
+  {
+    'akinsho/git-conflict.nvim',
+    event = 'VeryLazy',
+    opts = {
+      default_mappings = {
+        ours = '<leader>g1',
+        theirs = '<leader>g2',
+        none = '<leader>g0',
+        both = '<leader>g3',
+        prev = '[x',
+        next = ']x',
+      },
+      disable_diagnostics = true,
+    },
+  },
 }

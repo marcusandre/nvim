@@ -6,9 +6,14 @@ return {
   },
   {
     'neovim/nvim-lspconfig',
+    event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
-      -- LSP
-      { 'williamboman/mason.nvim', config = true },
+      {
+        'williamboman/mason.nvim',
+        cmd = 'Mason',
+        build = ':MasonUpdate',
+        config = true,
+      },
       'williamboman/mason-lspconfig.nvim',
       'folke/neodev.nvim',
     },
@@ -19,9 +24,9 @@ return {
       -- Mason
       require('mason').setup()
 
-      -- Config
-      local servers = require('m.lsp').lua_servers
+      local lspconfig = require('lspconfig')
       local mason_lspconfig = require('mason-lspconfig')
+      local servers = require('m.lsp').lua_servers
 
       local on_attach = function(client)
         if client.name == 'tsserver' then client.server_capabilities.documentFormattingProvider = false end
@@ -35,7 +40,7 @@ return {
 
       mason_lspconfig.setup_handlers({
         function(server_name)
-          require('lspconfig')[server_name].setup({
+          lspconfig[server_name].setup({
             capabilities = capabilities,
             on_attach = on_attach,
             settings = servers[server_name],
