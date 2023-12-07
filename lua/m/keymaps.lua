@@ -111,6 +111,7 @@ vim.keymap.set('n', '<leader>eu', '<CMD>UndotreeToggle<CR>', { desc = 'Open Undo
 
 -- Other
 vim.keymap.set('n', '<leader>ol', '<Cmd>Lazy<CR>', { desc = 'Lazy' })
+vim.keymap.set('n', '<leader>ok', '<Cmd>lua MiniExtra.pickers.keymaps()<CR>', { desc = 'Keymaps' })
 vim.keymap.set('n', '<leader>om', '<Cmd>Mason<CR>', { desc = 'Mason' })
 vim.keymap.set('n', '<leader>oo', '<Cmd>only<CR>', { desc = 'Window: Only' })
 vim.keymap.set('n', '<leader>or', '<Cmd>lua MiniMisc.resize_window()<CR>', { desc = 'Resize to defaut width' })
