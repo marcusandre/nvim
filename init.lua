@@ -17,13 +17,18 @@ bootstrap_paq({
 
   -- Editing
   'numToStr/Comment.nvim',
+  'stevearc/conform.nvim',
   'tpope/vim-sleuth',
 
   -- Mini
   'echasnovski/mini.nvim',
 
   -- LSP
+  'williamboman/mason.nvim',
+  'williamboman/mason-lspconfig.nvim',
+  'neovim/nvim-lspconfig',
   'folke/neodev.nvim',
+  'j-hui/fidget.nvim',
 
   -- Git
   'lewis6991/gitsigns.nvim',
@@ -34,13 +39,19 @@ bootstrap_paq({
   'folke/which-key.nvim',
   'lukas-reineke/indent-blankline.nvim',
   'folke/tokyonight.nvim',
+
+  -- Others
+  'nvim-lua/plenary.nvim',
+  'pmizio/typescript-tools.nvim',
 })
 
 -- Core
+require('options')
 require('keymaps')
 
 -- Plugins
 require('treesitter')
+require('lsp')
 require('editing')
 require('mini')
 require('ui')

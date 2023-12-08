@@ -9,7 +9,7 @@ vim.defer_fn(function()
       'javascript',
       'typescript',
       'vimdoc',
-      'vim'
+      'vim',
     },
     -- indent = {
     --   enable = true,

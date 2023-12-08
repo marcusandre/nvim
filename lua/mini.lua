@@ -57,7 +57,7 @@ hipatterns.setup({
 })
 
 -- mini.starter
--- require('mini.starter').setup()
+require('mini.starter').setup()
 
 -- mini.statusline
 require('mini.statusline').setup()

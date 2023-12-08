@@ -12,6 +12,46 @@ vim.keymap.set('i', '<S-Tab>', [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { expr 
 vim.keymap.set('n', '<leader>bd', '<Cmd>lua MiniBufremove.delete()<CR>', { desc = 'Delete' })
 vim.keymap.set('n', '<leader>bD', '<Cmd>lua MiniBufremove.delete({ force = true })<CR>', { desc = 'Delete!' })
 
+-- LSP
+vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, { desc = 'Code Actions' })
+vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, { desc = 'Rename' })
+vim.keymap.set('n', 'gD', '<Cmd>Pick lsp scope="declaration"<CR>', { desc = 'Declaration (LSP)' })
+vim.keymap.set('n', 'gd', '<Cmd>Pick lsp scope="definition"<CR>', { desc = 'Definition (LSP)' })
+vim.keymap.set('n', 'gi', '<Cmd>Pick lsp scope="implementation"<CR>', { desc = 'Implementation (LSP)' })
+vim.keymap.set('n', 'gl', '<Cmd>Pick lsp scope="type_definition"<CR>', { desc = 'Type definition (LSP)' })
+vim.keymap.set('n', 'gr', '<Cmd>Pick lsp scope="references"<CR>', { desc = 'References (LSP)' })
+vim.keymap.set('n', 'gw', '<Cmd>Pick grep pattern="<cword>"<CR>', { desc = 'Grep word (LSP)' })
+vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Information' })
+
+-- LSP (Leader)
+vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, { desc = 'Code Action' })
+vim.keymap.set('n', '<leader>lD', vim.lsp.buf.declaration, { desc = 'Declaration' })
+vim.keymap.set('n', '<leader>ld', vim.lsp.buf.definition, { desc = 'Definition' })
+vim.keymap.set('n', '<leader>lf', '<Cmd>lua vim.lsp.buf.format({ async = true })<CR>', { desc = 'Format' })
+vim.keymap.set('n', '<leader>li', vim.lsp.buf.implementation, { desc = 'Implementation' })
+vim.keymap.set('n', '<leader>lR', vim.lsp.buf.references, { desc = 'References' })
+vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, { desc = 'Rename' })
+vim.keymap.set('n', '<leader>ls', vim.lsp.buf.signature_help, { desc = 'Signature' })
+vim.keymap.set('n', '<leader>ly', vim.lsp.buf.type_definition, { desc = 'Type Definition' })
+vim.keymap.set('v', '<leader>la', vim.lsp.buf.code_action, { desc = 'Code Action' })
+vim.keymap.set('x', '<leader>lf', '<Cmd>lua vim.lsp.buf.format({ async = true })<CR>', { desc = 'Format' })
+
+-- Diagnostics
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Previous Diagnostic' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Next Diagnostic' })
+vim.keymap.set(
+  'n',
+  '[e',
+  function() vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR }) end,
+  { desc = 'Previous Diagnostic' }
+)
+vim.keymap.set(
+  'n',
+  ']e',
+  function() vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR }) end,
+  { desc = 'Next Diagnostic' }
+)
+
 -- Git
 vim.keymap.set('n', '<leader>gg', '<Cmd>Git<CR>', { desc = 'Git' })
 
@@ -48,3 +88,18 @@ vim.keymap.set('n', '<leader>fg', '<Cmd>lua MiniExtra.pickers.git_files()<CR>', 
 vim.keymap.set('n', '<leader>fk', '<Cmd>lua MiniExtra.pickers.keymaps()<CR>', { desc = 'Keymaps' })
 vim.keymap.set('n', '<leader>fo', '<Cmd>lua MiniExtra.pickers.oldfiles()<CR>', { desc = 'Oldfiles' })
 vim.keymap.set('n', '<leader>ft', '<Cmd>lua MiniExtra.pickers.treesitter()<CR>', { desc = 'Treesitter' })
+
+-- Testing
+vim.keymap.set('n', '<leader>tF', '<Cmd>TestFile --coverage<CR>', { desc = 'Test: file (coverage)' })
+vim.keymap.set('n', '<leader>tL', '<Cmd>TestLast --coverage<CR>', { desc = 'Test: last (coverage)' })
+vim.keymap.set('n', '<leader>tN', '<Cmd>TestNearest --coverage<CR>', { desc = 'Test: nearest (coverage)' })
+vim.keymap.set('n', '<leader>tS', '<Cmd>TestSuite --coverage<CR>', { desc = 'Test: suite (coverage)' })
+vim.keymap.set('n', '<leader>tf', '<Cmd>TestFile<CR>', { desc = 'Test: file' })
+vim.keymap.set('n', '<leader>tl', '<Cmd>TestLast<CR>', { desc = 'Test: last' })
+vim.keymap.set('n', '<leader>tn', '<Cmd>TestNearest<CR>', { desc = 'Test: nearest' })
+vim.keymap.set('n', '<leader>ts', '<Cmd>TestSuite<CR>', { desc = 'Test: suite' })
+vim.keymap.set('n', '<leader>tv', '<Cmd>TestVisit<CR>', { desc = 'Test: visit' })
+vim.keymap.set('n', '<leader>tc', '<Cmd>Coverage<CR>', { desc = 'Test: coverage' })
+
+-- Other
+vim.keymap.set('n', '<leader>oo', '<Cmd>only<CR>', { desc = 'Window: Only' })

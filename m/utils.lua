@@ -1,5 +1,7 @@
 local M = {}
 
+--- Paq
+
 M.clone_paq = function()
   local path = vim.fn.stdpath('data') .. '/site/pack/paqs/start/paq-nvim'
   local is_installed = vim.fn.empty(vim.fn.glob(path)) == 0
@@ -18,5 +20,23 @@ M.bootstrap_paq = function(packages)
   paq(packages)
   paq.install()
 end
+
+--- LSP
+
+M.lua_servers = {
+  lua_ls = {
+    Lua = {
+      completion = {
+        callSnippet = 'Replace',
+      },
+      runtime = {
+        version = 'LuaJIT',
+      },
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
+}
 
 return M
