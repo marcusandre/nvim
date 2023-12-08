@@ -1,8 +1,0 @@
-{
-    "workspace.library": [
-        "/Users/mzui5of/.local/share/nvim/lazy/neodev.nvim/types/stable",
-        "/opt/homebrew/Cellar/neovim/0.9.4/share/nvim/runtime/lua",
-        "/Users/mzui5of/.dotfiles/nvim/lua",
-        "${3rd}/luv/library"
-    ]
-}
