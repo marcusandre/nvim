@@ -5,7 +5,7 @@ if vim.fn.has('nvim-0.9') == 1 then vim.loader.enable() end
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-local bootstrap_paq = require('m.utils').bootstrap_paq
+local bootstrap_paq = require('utils').bootstrap_paq
 
 bootstrap_paq({
   -- Let 'paq' manage itself
