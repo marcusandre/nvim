@@ -115,7 +115,7 @@ MiniStarter.setup({
 require('mini.statusline').setup()
 
 -- mini.tabline
--- require('mini.tabline').setup()
+require('mini.tabline').setup()
 
 -- mini.visits
 -- require('mini.visits').setup()
