@@ -1,3 +1,10 @@
+require('tokyonight').setup({
+  styles = {
+    comments = { italic = true },
+    keywords = { italic = false },
+  },
+})
+
 vim.cmd.colorscheme('tokyonight')
 
 require('which-key').setup()
