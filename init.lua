@@ -10,6 +10,7 @@ local bootstrap_paq = require('utils').bootstrap_paq
 bootstrap_paq({
   -- Let 'paq' manage itself
   'savq/paq-nvim',
+  'nvim-lua/plenary.nvim',
 
   -- Treesitter
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
@@ -35,14 +36,18 @@ bootstrap_paq({
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
 
+  -- Testing
+  'vim-test/vim-test',
+  'andythigpen/nvim-coverage',
+
   -- UI
   'folke/which-key.nvim',
   'lukas-reineke/indent-blankline.nvim',
   'folke/tokyonight.nvim',
 
   -- Others
-  'nvim-lua/plenary.nvim',
   'pmizio/typescript-tools.nvim',
+  'tpope/vim-projectionist',
 })
 
 -- Core
@@ -56,3 +61,4 @@ require('editing')
 require('mini')
 require('ui')
 require('git')
+require('testing')
