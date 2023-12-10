@@ -30,6 +30,7 @@ bootstrap_paq({
   'neovim/nvim-lspconfig',
   'folke/neodev.nvim',
   'j-hui/fidget.nvim',
+  'pmizio/typescript-tools.nvim',
 
   -- Git
   'lewis6991/gitsigns.nvim',
@@ -46,7 +47,7 @@ bootstrap_paq({
   'folke/tokyonight.nvim',
 
   -- Others
-  'pmizio/typescript-tools.nvim',
+  'stevearc/oil.nvim',
   'tpope/vim-projectionist',
   'b0o/schemastore.nvim',
 })

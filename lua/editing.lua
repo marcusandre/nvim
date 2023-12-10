@@ -1,5 +1,18 @@
--- Comment
-require('Comment').setup()
+-- Oil
+require('oil').setup({
+  default_file_explorer = true,
+  columns = {
+    'type',
+    'icon',
+  },
+  view_options = {
+    show_hidden = true,
+    sort = {
+      { 'type', 'asc' },
+      { 'name', 'asc' },
+    },
+  },
+})
 
 -- Conform
 require('conform').setup({
@@ -17,3 +30,6 @@ require('conform').setup({
 })
 
 vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+
+-- Comment
+require('Comment').setup()

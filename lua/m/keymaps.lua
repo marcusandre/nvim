@@ -101,6 +101,9 @@ vim.keymap.set(
   { desc = 'Files (Current)' }
 )
 
+-- Oil
+vim.keymap.set('n', '<leader>oo', '<Cmd>Oil<CR>', { desc = 'Oil' })
+
 -- Quickfix
 vim.keymap.set('n', '<leader>qq', utils.toggle_quickfix, { desc = 'Quickfix' })
 
@@ -117,6 +120,6 @@ vim.keymap.set('n', '<leader>tv', '<Cmd>TestVisit<CR>', { desc = 'Test: visit' }
 vim.keymap.set('n', '<leader>tc', '<Cmd>Coverage<CR>', { desc = 'Test: coverage' })
 
 -- Other
-vim.keymap.set('n', '<leader>oo', '<Cmd>only<CR>', { desc = 'Only' })
-vim.keymap.set('n', '<leader>op', '<Cmd>PaqSync<CR>', { desc = 'Paq' })
+vim.keymap.set('n', '<leader>oc', '<Cmd>colorscheme randomhue<CR>', { desc = 'Random colorscheme' })
 vim.keymap.set('n', '<leader>om', '<Cmd>Mason<CR>', { desc = 'Mason' })
+vim.keymap.set('n', '<leader>op', '<Cmd>PaqSync<CR>', { desc = 'Paq' })
