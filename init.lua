@@ -53,6 +53,7 @@ bootstrap_paq({
 })
 
 -- Core
+require('m.globals')
 require('m.options')
 require('m.keymaps')
 
