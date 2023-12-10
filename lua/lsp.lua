@@ -7,12 +7,27 @@ require('fidget').setup({})
 -- Mason
 require('mason').setup()
 
-local servers = require('m.utils').lua_servers
 local mason_lspconfig = require('mason-lspconfig')
 
 local on_attach = function(client)
   if client.name == 'tsserver' then client.server_capabilities.documentFormattingProvider = false end
 end
+
+local servers = {
+  lua_ls = {
+    Lua = {
+      completion = {
+        callSnippet = 'Replace',
+      },
+      runtime = {
+        version = 'LuaJIT',
+      },
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
+}
 
 mason_lspconfig.setup({
   ensure_installed = vim.tbl_keys(servers),

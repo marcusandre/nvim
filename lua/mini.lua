@@ -40,7 +40,25 @@ local miniextra = require('mini.extra')
 miniextra.setup()
 
 -- mini.files
+local utils = require('m.utils')
+
 require('mini.files').setup()
+
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'MiniFilesActionRename',
+  callback = function(event) utils.file_on_rename(event.data.from, event.data.to) end,
+})
+
+vim.api.nvim_create_autocmd('User', {
+  desc = 'Add minifiles keymaps',
+  pattern = 'MiniFilesBufferCreate',
+  callback = function(event)
+    local buf_id = event.data.buf_id
+    vim.keymap.set('n', 'gY', utils.yank_reative_path, {
+      buffer = buf_id,
+    })
+  end,
+})
 
 -- mini.hipatterns
 local hipatterns = require('mini.hipatterns')

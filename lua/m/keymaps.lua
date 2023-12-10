@@ -1,3 +1,5 @@
+local utils = require('m.utils')
+
 -- General
 vim.keymap.set('n', 'Q', '<nop>')
 vim.keymap.set('n', 'n', 'nzz')
@@ -61,36 +63,46 @@ vim.keymap.set('n', '<leader>gb', '<Cmd>lua require("gitsigns").blame_line()<CR>
 vim.keymap.set('n', '<leader>gp', '<Cmd>lua require("gitsigns").preview_hunk()<CR>', { desc = 'Preview hunk' })
 vim.keymap.set('n', '<leader>gq', '<Cmd>lua require("gitsigns").setqflist()<CR>:copen<CR>', { desc = 'Quickfix hunks' })
 vim.keymap.set('n', '<leader>gu', '<Cmd>lua require("gitsigns").undo_stage_hunk()<CR>', { desc = 'Undo stage hunk' })
-vim.keymap.set(
-  'n',
-  '<leader>gX',
-  '<Cmd>lua require("gitsigns").reset_buffer()<CR>',
-  { desc = 'Discard (reset) buffer' }
-)
-vim.keymap.set('n', '<leader>gx', '<Cmd>lua require("gitsigns").reset_hunk()<CR>', { desc = 'Discard (reset) hunk' })
+vim.keymap.set('n', '<leader>gX', '<Cmd>lua require("gitsigns").reset_buffer()<CR>', { desc = 'Discard buffer' })
+vim.keymap.set('n', '<leader>gx', '<Cmd>lua require("gitsigns").reset_hunk()<CR>', { desc = 'Discard hunk' })
 
 vim.keymap.set('n', '[h', '<Cmd>Gitsigns prev_hunk<CR>zvzz', { desc = 'Goto previous hunk' })
 vim.keymap.set('n', ']h', '<Cmd>Gitsigns next_hunk<CR>zvzz', { desc = 'Goto next hunk' })
 
--- Mini.Pick
-vim.keymap.set('n', '<leader>/', '<Cmd>lua MiniPick.builtin.grep_live()<CR>', { desc = 'Grep' })
-vim.keymap.set('n', '<leader>fb', '<Cmd>lua MiniPick.builtin.buffers()<CR>', { desc = 'Buffers' })
-vim.keymap.set('n', '<leader>ff', '<Cmd>lua MiniPick.builtin.files()<CR>', { desc = 'Files' })
-vim.keymap.set('n', '<leader>fh', '<Cmd>lua MiniPick.builtin.help()<CR>', { desc = 'Help' })
-vim.keymap.set('n', '<leader>fr', '<Cmd>lua MiniPick.builtin.resume()<CR>', { desc = 'Resume' })
-
--- Mini.Extra
+-- Pick
 vim.keymap.set('n', ',', '<Cmd>lua MiniExtra.pickers.buf_lines()<CR>', { desc = 'Buffer lines' })
+vim.keymap.set('n', '<leader>/', '<Cmd>lua MiniPick.builtin.grep_live()<CR>', { desc = 'Grep' })
+vim.keymap.set('n', '<leader>:', '<Cmd>Pick history<CR>', { desc = 'History' })
+vim.keymap.set('n', '<leader>fD', '<Cmd>Pick diagnostic scope="all"<CR>', { desc = 'Diagnostics (Workspace)' })
+vim.keymap.set('n', '<leader>fG', utils.pick_file_changes_from_branch, { desc = 'Git changes (branch)' })
+vim.keymap.set('n', '<leader>fL', '<Cmd>Pick buf_lines scope="all"<CR>', { desc = 'Lines (all)' })
+vim.keymap.set('n', '<leader>fS', '<Cmd>Pick lsp scope="workspace_symbol"<CR>', { desc = 'Symbols (Workspace)' })
 vim.keymap.set('n', '<leader>fa', '<Cmd>lua MiniExtra.pickers.git_hunks()<CR>', { desc = 'Git Hunks' })
+vim.keymap.set('n', '<leader>fb', '<Cmd>lua MiniPick.builtin.buffers()<CR>', { desc = 'Buffers' })
 vim.keymap.set('n', '<leader>fd', '<Cmd>lua MiniExtra.pickers.diagnostic()<CR>', { desc = 'Diagnostics' })
 vim.keymap.set('n', '<leader>fe', '<Cmd>lua MiniExtra.pickers.explorer()<CR>', { desc = 'Explorer' })
-vim.keymap.set('n', '<leader>fg', '<Cmd>lua MiniExtra.pickers.git_files()<CR>', { desc = 'Git Files' })
+vim.keymap.set('n', '<leader>ff', '<Cmd>lua MiniPick.builtin.files()<CR>', { desc = 'Files' })
+vim.keymap.set('n', '<leader>fg', utils.pick_modified_untracked, { desc = 'Git files' })
+vim.keymap.set('n', '<leader>fh', '<Cmd>lua MiniPick.builtin.help()<CR>', { desc = 'Help' })
+vim.keymap.set('n', '<leader>fj', '<Cmd>Pick list scope="jump"<CR>', { desc = 'Jumplist' })
 vim.keymap.set('n', '<leader>fk', '<Cmd>lua MiniExtra.pickers.keymaps()<CR>', { desc = 'Keymaps' })
+vim.keymap.set('n', '<leader>fl', '<Cmd>Pick buf_lines scope="current"<CR>', { desc = 'Lines (current)' })
 vim.keymap.set('n', '<leader>fo', '<Cmd>lua MiniExtra.pickers.oldfiles()<CR>', { desc = 'Oldfiles' })
+vim.keymap.set('n', '<leader>fr', '<Cmd>lua MiniPick.builtin.resume()<CR>', { desc = 'Resume' })
+vim.keymap.set('n', '<leader>fs', '<Cmd>Pick lsp scope="document_symbol"<CR>', { desc = 'Symbols (Buffer)' })
 vim.keymap.set('n', '<leader>ft', '<Cmd>lua MiniExtra.pickers.treesitter()<CR>', { desc = 'Treesitter' })
 
 -- Explore
-vim.keymap.set('n', '<leader>ee', '<Cmd>lua MiniFiles.open()<CR>', { desc = 'Files' })
+vim.keymap.set('n', '<leader>ee', utils.minifiles_toggle, { desc = 'Files' })
+vim.keymap.set(
+  'n',
+  '<leader>ee',
+  '<Cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0), true)<CR>',
+  { desc = 'Files (Current)' }
+)
+
+-- Quickfix
+vim.keymap.set('n', '<leader>qq', utils.toggle_quickfix, { desc = 'Quickfix' })
 
 -- Testing
 vim.keymap.set('n', '<leader>tF', '<Cmd>TestFile --coverage<CR>', { desc = 'Test: file (coverage)' })
@@ -105,4 +117,6 @@ vim.keymap.set('n', '<leader>tv', '<Cmd>TestVisit<CR>', { desc = 'Test: visit' }
 vim.keymap.set('n', '<leader>tc', '<Cmd>Coverage<CR>', { desc = 'Test: coverage' })
 
 -- Other
-vim.keymap.set('n', '<leader>oo', '<Cmd>only<CR>', { desc = 'Window: Only' })
+vim.keymap.set('n', '<leader>oo', '<Cmd>only<CR>', { desc = 'Only' })
+vim.keymap.set('n', '<leader>op', '<Cmd>PaqSync<CR>', { desc = 'Paq' })
+vim.keymap.set('n', '<leader>om', '<Cmd>Mason<CR>', { desc = 'Mason' })
