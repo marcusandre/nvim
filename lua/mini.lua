@@ -1,3 +1,8 @@
+-- mini.extra
+local miniextra = require('mini.extra')
+
+miniextra.setup()
+
 -- mini.basics
 require('mini.basics').setup({
   options = {
@@ -5,9 +10,11 @@ require('mini.basics').setup({
   },
   mappings = {
     windows = true,
-    move_with_alt = true,
   },
 })
+
+-- mini.bracketed
+require('mini.bracketed').setup()
 
 -- mini.bufremove
 require('mini.bufremove').setup()
@@ -21,23 +28,6 @@ require('mini.completion').setup({
 
 -- mini.cursorword
 require('mini.cursorword').setup()
-
--- mini.cursorword
-require('mini.pick').setup()
-
--- mini.surround
-require('mini.surround').setup()
-
--- mini.splitjoin
-require('mini.splitjoin').setup()
-
--- mini.trailspace
-require('mini.trailspace').setup()
-
--- mini.extra
-local miniextra = require('mini.extra')
-
-miniextra.setup()
 
 -- mini.files
 local utils = require('m.utils')
@@ -60,6 +50,32 @@ vim.api.nvim_create_autocmd('User', {
   end,
 })
 
+-- mini.misc
+require('mini.misc').setup()
+
+-- mini.move
+require('mini.move').setup({
+  options = {
+    reindent_linewise = false,
+  },
+})
+
+-- mini.pick
+local pick = require('mini.pick')
+
+pick.setup()
+
+vim.ui.select = pick.ui_select
+
+-- mini.surround
+require('mini.surround').setup()
+
+-- mini.splitjoin
+require('mini.splitjoin').setup()
+
+-- mini.trailspace
+require('mini.trailspace').setup()
+
 -- mini.hipatterns
 local hipatterns = require('mini.hipatterns')
 local hi_words = miniextra.gen_highlighter.words
@@ -75,7 +91,25 @@ hipatterns.setup({
 })
 
 -- mini.starter
-require('mini.starter').setup()
+local MiniStarter = require('mini.starter')
+
+local header = function()
+  local hour = tonumber(vim.fn.strftime('%H'))
+  local part_id = math.floor((hour + 4) / 8) + 1
+  local day_part = ({ 'evening', 'morning', 'afternoon', 'evening' })[part_id]
+
+  return ('Good %s!'):format(day_part)
+end
+
+MiniStarter.setup({
+  silent = true,
+  items = {
+    MiniStarter.sections.builtin_actions(),
+    MiniStarter.sections.recent_files(5, true, false),
+    MiniStarter.sections.recent_files(5, false, false),
+  },
+  header = header,
+})
 
 -- mini.statusline
 require('mini.statusline').setup()
