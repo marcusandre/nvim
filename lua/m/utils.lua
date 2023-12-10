@@ -68,6 +68,14 @@ M.yank_reative_path = function()
   print(path)
 end
 
+M.find_files_without_spec = function()
+  local MiniPick = require('mini.pick')
+
+  MiniPick.builtin.cli({
+    command = { 'fd', '--type=f', '--no-follow', '--color=never', '-E=*.spec.js*', '-E=*.spec.ts*' },
+  })
+end
+
 --- Mini.Pick
 M.pick_modified_untracked = function()
   local MiniPick = require('mini.pick')
