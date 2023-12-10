@@ -48,6 +48,7 @@ bootstrap_paq({
   -- Others
   'pmizio/typescript-tools.nvim',
   'tpope/vim-projectionist',
+  'b0o/schemastore.nvim',
 })
 
 -- Core
