@@ -7,7 +7,7 @@ require('fidget').setup({})
 -- Mason
 require('mason').setup()
 
-local servers = require('utils').lua_servers
+local servers = require('m.utils').lua_servers
 local mason_lspconfig = require('mason-lspconfig')
 
 local on_attach = function(client)

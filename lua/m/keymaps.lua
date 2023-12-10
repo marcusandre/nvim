@@ -89,6 +89,9 @@ vim.keymap.set('n', '<leader>fk', '<Cmd>lua MiniExtra.pickers.keymaps()<CR>', { 
 vim.keymap.set('n', '<leader>fo', '<Cmd>lua MiniExtra.pickers.oldfiles()<CR>', { desc = 'Oldfiles' })
 vim.keymap.set('n', '<leader>ft', '<Cmd>lua MiniExtra.pickers.treesitter()<CR>', { desc = 'Treesitter' })
 
+-- Explore
+vim.keymap.set('n', '<leader>ee', '<Cmd>lua MiniFiles.open()<CR>', { desc = 'Files' })
+
 -- Testing
 vim.keymap.set('n', '<leader>tF', '<Cmd>TestFile --coverage<CR>', { desc = 'Test: file (coverage)' })
 vim.keymap.set('n', '<leader>tL', '<Cmd>TestLast --coverage<CR>', { desc = 'Test: last (coverage)' })
