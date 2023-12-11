@@ -62,7 +62,3 @@ vim.o.spelloptions = 'camel'      -- Treat parts of camelCase words as seprate w
 vim.opt.complete:append('kspell') -- Add spellcheck options for autocomplete
 vim.opt.complete:remove('t')      -- Don't use tags for completion
 -- stylua: ignore end
-
--- Undercurls
-vim.cmd([[let &t_Cs = "\e[4:3m]"]])
-vim.cmd([[let &t_Cs = "\e[4:0m]"]])

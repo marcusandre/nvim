@@ -66,8 +66,3 @@ require('mini')
 require('ui')
 require('git')
 require('testing')
-
--- Misc
-local cowboy = require('m.discipline').cowboy
-
-cowboy()

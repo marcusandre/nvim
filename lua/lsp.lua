@@ -14,6 +14,7 @@ local on_attach = function(client)
 end
 
 local servers = {
+  stylelint_lsp = {},
   lua_ls = {
     Lua = {
       runtime = {
