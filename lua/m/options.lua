@@ -10,17 +10,17 @@ vim.o.mouse          = 'a'   -- Enable mouse for all available modes
 
 -- UI
 -- stylua: ignore start
-vim.o.breakindent    = true -- Indend wrapped lines to match line start
-vim.o.cursorline     = true -- Highlight current line
-vim.o.linebreak      = true -- Wrap long lines at 'breakat'
-vim.o.number         = true -- Show line numbers
-vim.o.relativenumber = true -- Show relative line numbers
-vim.o.splitbelow     = true -- Horizontal splits will be shown below
-vim.o.splitright     = true -- Vertical splits will be shown to the right
-vim.o.termguicolors  = true -- Enable gui colors
-
+vim.o.breakindent    = true  -- Indend wrapped lines to match line start
+vim.o.cursorline     = true  -- Highlight current line
+vim.o.laststatus     = 3     -- Statusbar per window
+vim.o.linebreak      = true  -- Wrap long lines at 'breakat'
+vim.o.number         = true  -- Show line numbers
+vim.o.relativenumber = true  -- Show relative line numbers
 vim.o.ruler          = false -- Don't show cursor position in command line
 vim.o.showmode       = false -- Don't show mode in command line
+vim.o.splitbelow     = true  -- Horizontal splits will be shown below
+vim.o.splitright     = true  -- Vertical splits will be shown to the right
+vim.o.termguicolors  = true  -- Enable gui colors
 vim.o.wrap           = false -- Display long lines as just one line
 
 -- vim.o.pumblend       = 10 -- Make builtin completion menus slightly transparent
@@ -62,3 +62,7 @@ vim.o.spelloptions = 'camel'      -- Treat parts of camelCase words as seprate w
 vim.opt.complete:append('kspell') -- Add spellcheck options for autocomplete
 vim.opt.complete:remove('t')      -- Don't use tags for completion
 -- stylua: ignore end
+
+-- Undercurls
+vim.cmd([[let &t_Cs = "\e[4:3m]"]])
+vim.cmd([[let &t_Cs = "\e[4:0m]"]])

@@ -20,6 +20,7 @@ bootstrap_paq({
   'numToStr/Comment.nvim',
   'stevearc/conform.nvim',
   'tpope/vim-sleuth',
+  'smjonas/inc-rename.nvim',
 
   -- Mini
   'echasnovski/mini.nvim',
@@ -65,3 +66,8 @@ require('mini')
 require('ui')
 require('git')
 require('testing')
+
+-- Misc
+local cowboy = require('m.discipline').cowboy
+
+cowboy()
