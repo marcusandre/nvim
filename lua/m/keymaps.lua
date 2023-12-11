@@ -11,8 +11,14 @@ vim.keymap.set('i', '<Tab>', [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = tr
 vim.keymap.set('i', '<S-Tab>', [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { expr = true })
 
 -- Buffers
-vim.keymap.set('n', '<leader>bd', '<Cmd>lua MiniBufremove.delete()<CR>', { desc = 'Delete' })
-vim.keymap.set('n', '<leader>bD', '<Cmd>lua MiniBufremove.delete({ force = true })<CR>', { desc = 'Delete!' })
+vim.keymap.set('n', '<leader>ba', '<Cmd>b#<CR>', { desc = 'Alternate' })
+vim.keymap.set('n', '<leader>bd', utils.delete_buffer, { desc = 'Delete' })
+vim.keymap.set('n', '<leader>bD', function() utils.delete_buffer(0, true) end, { desc = 'Delete!' })
+vim.keymap.set('n', '<leader>bq', utils.delete_other_buffers, { desc = 'Delete Others' })
+vim.keymap.set('n', '<leader>bQ', utils.delete_all_buffers, { desc = 'Delete All' })
+vim.keymap.set('n', '<leader>bs', utils.make_scratch_buffer, { desc = 'Scratch' })
+vim.keymap.set('n', '<leader>bw', utils.wipeout_buffer, { desc = 'Wipeout' })
+vim.keymap.set('n', '<leader>bW', function() utils.wipeout_buffer(0, true) end, { desc = { desc = 'Wipeout!' } })
 
 -- LSP
 vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, { desc = 'Code Actions' })
