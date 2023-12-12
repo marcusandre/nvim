@@ -21,6 +21,7 @@ bootstrap_paq({
   'stevearc/conform.nvim',
   'tpope/vim-sleuth',
   'smjonas/inc-rename.nvim',
+  'ethanholz/nvim-lastplace',
 
   -- Mini
   'echasnovski/mini.nvim',

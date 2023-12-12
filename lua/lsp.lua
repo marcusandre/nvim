@@ -14,17 +14,16 @@ local on_attach = function(client)
 end
 
 local servers = {
+  cssls = {},
+  eslint = {},
+  gopls = {},
+  jsonls = {},
+  lua_ls = { Lua = { runtime = { version = 'LuaJIT' }, telemetry = { enable = false } } },
+  marksman = {},
+  rust_analyzer = {},
   stylelint_lsp = {},
-  lua_ls = {
-    Lua = {
-      runtime = {
-        version = 'LuaJIT',
-      },
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
+  terraformls = {},
+  yamlls = {},
 }
 
 mason_lspconfig.setup({
@@ -46,7 +45,7 @@ mason_lspconfig.setup_handlers({
   end,
 })
 
-require('lspconfig').jsonls.setup({
+lspconfig.jsonls.setup({
   settings = {
     json = {
       schemas = require('schemastore').json.schemas(),
@@ -55,7 +54,7 @@ require('lspconfig').jsonls.setup({
   },
 })
 
-require('lspconfig').yamlls.setup({
+lspconfig.yamlls.setup({
   settings = {
     yaml = {
       schemaStore = {
@@ -68,6 +67,15 @@ require('lspconfig').yamlls.setup({
       schemas = require('schemastore').yaml.schemas(),
     },
   },
+})
+
+lspconfig.eslint.setup({
+  on_attach = function(_, bufnr)
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      buffer = bufnr,
+      command = 'EslintFixAll',
+    })
+  end,
 })
 
 -- TypeScript-Tools

@@ -99,29 +99,6 @@ M.toggle_quickfix = function()
   if not vim.tbl_isempty(vim.fn.getqflist()) then vim.cmd('copen') end
 end
 
---- Mini.Files
-M.minifiles_toggle = function(...)
-  local MiniFiles = require('mini.files')
-  if not MiniFiles.close() then MiniFiles.open(...) end
-end
-
-M.yank_reative_path = function()
-  local MiniFiles = require('mini.files')
-  local path_entry = MiniFiles.get_fs_entry().path
-  local path = vim.fn.fnamemodify(path_entry, ':.')
-
-  vim.fn.setreg('+', path)
-  print(path)
-end
-
-M.find_files_without_spec = function()
-  local MiniPick = require('mini.pick')
-
-  MiniPick.builtin.cli({
-    command = { 'fd', '--type=f', '--no-follow', '--color=never', '-E=*.spec.js*', '-E=*.spec.ts*' },
-  })
-end
-
 --- Mini.Pick
 M.pick_modified_untracked = function()
   local MiniPick = require('mini.pick')
@@ -131,6 +108,14 @@ M.pick_modified_untracked = function()
     show = function(buf_id, items, query) return MiniPick.default_show(buf_id, items, query, { show_icons = true }) end,
   }
   return MiniPick.builtin.cli(local_opts, { source = source })
+end
+
+M.find_files_without_spec = function()
+  local MiniPick = require('mini.pick')
+
+  MiniPick.builtin.cli({
+    command = { 'fd', '--type=f', '--no-follow', '--color=never', '-E=*.spec.js*', '-E=*.spec.ts*' },
+  })
 end
 
 M.pick_file_changes_from_branch = function()

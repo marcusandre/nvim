@@ -3,13 +3,25 @@ local miniextra = require('mini.extra')
 
 miniextra.setup()
 
+-- mini.ai
+local ai = require('mini.ai')
+ai.setup({
+  custom_textobjects = {
+    F = ai.gen_spec.treesitter({ a = '@function.outer', i = '@function.inner' }),
+  },
+})
+
 -- mini.basics
 require('mini.basics').setup({
   options = {
     extra_ui = true,
   },
   mappings = {
+    basics = true,
     windows = true,
+  },
+  autocommands = {
+    basic = true,
   },
 })
 
@@ -29,27 +41,6 @@ require('mini.completion').setup({
 -- mini.cursorword
 require('mini.cursorword').setup()
 
--- mini.files
-local utils = require('m.utils')
-
-require('mini.files').setup()
-
-vim.api.nvim_create_autocmd('User', {
-  pattern = 'MiniFilesActionRename',
-  callback = function(event) utils.file_on_rename(event.data.from, event.data.to) end,
-})
-
-vim.api.nvim_create_autocmd('User', {
-  desc = 'Add minifiles keymaps',
-  pattern = 'MiniFilesBufferCreate',
-  callback = function(event)
-    local buf_id = event.data.buf_id
-    vim.keymap.set('n', 'gY', utils.yank_reative_path, {
-      buffer = buf_id,
-    })
-  end,
-})
-
 -- mini.misc
 require('mini.misc').setup()
 
@@ -59,6 +50,9 @@ require('mini.move').setup({
     reindent_linewise = false,
   },
 })
+
+-- mini.pairs
+require('mini.pairs').setup()
 
 -- mini.pick
 local pick = require('mini.pick')
@@ -118,4 +112,4 @@ require('mini.statusline').setup()
 require('mini.tabline').setup()
 
 -- mini.visits
--- require('mini.visits').setup()
+require('mini.visits').setup()
