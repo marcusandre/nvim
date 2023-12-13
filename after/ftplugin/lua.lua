@@ -18,3 +18,5 @@ if has_mini_splitjoin then
     join = { hooks_post = { del_comma_curly, pad_curly } },
   }
 end
+
+vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"

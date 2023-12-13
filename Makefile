@@ -1,2 +1,2 @@
 lint:
-	stylua . -v
+	stylua --color always --check -v .

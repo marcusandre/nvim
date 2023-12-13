@@ -25,8 +25,6 @@ require('conform').setup({
   },
 })
 
-vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
-
 -- Comment
 require('Comment').setup()
 
