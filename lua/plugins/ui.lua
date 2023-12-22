@@ -7,7 +7,7 @@ require('tokyonight').setup({
 })
 
 -- Colors
-vim.cmd.colorscheme('tokyonight')
+vim.cmd.colorscheme('tokyonight-night')
 
 -- folke/which-key
 require('which-key').setup()

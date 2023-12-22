@@ -75,6 +75,8 @@ lspconfig.eslint.setup({
       buffer = bufnr,
       command = 'EslintFixAll',
     })
+
+    vim.keymap.set('n', '<leader>lf', '<Cmd>EslintFixAll<CR>', { desc = 'Format' })
   end,
 })
 
