@@ -62,3 +62,6 @@ vim.o.spelloptions = 'camel'      -- Treat parts of camelCase words as seprate w
 vim.opt.complete:append('kspell') -- Add spellcheck options for autocomplete
 vim.opt.complete:remove('t')      -- Don't use tags for completion
 -- stylua: ignore end
+
+-- Automatically resize all vim buffers on window resize
+vim.api.nvim_command('autocmd VimResized * wincmd =')

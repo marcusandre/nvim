@@ -47,6 +47,7 @@ bootstrap_paq({
   'folke/which-key.nvim',
   'lukas-reineke/indent-blankline.nvim',
   'folke/tokyonight.nvim',
+  'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
 
   -- Others
   'stevearc/oil.nvim',

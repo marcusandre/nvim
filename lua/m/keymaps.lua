@@ -6,6 +6,7 @@ map('n', 'Q', '<nop>')
 map('n', 'n', 'nzz')
 map('n', '<leader><leader>', '<Cmd>:b#<CR>', { desc = 'Alternate Buffer' })
 map('n', '<Esc>', '<Cmd>nohl<CR><Esc>', { desc = 'Remove highlights' })
+map('i', 'kj', '<Esc>', { desc = 'Leave input mode' })
 
 -- Completion
 map('i', '<Tab>', [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true })
@@ -45,7 +46,7 @@ map('n', '<leader>bq', utils.delete_other_buffers, { desc = 'Delete Others' })
 map('n', '<leader>bQ', utils.delete_all_buffers, { desc = 'Delete All' })
 map('n', '<leader>bs', utils.make_scratch_buffer, { desc = 'Scratch' })
 map('n', '<leader>bw', utils.wipeout_buffer, { desc = 'Wipeout' })
-map('n', '<leader>bW', function() utils.wipeout_buffer(0, true) end, { desc = { desc = 'Wipeout!' } })
+map('n', '<leader>bW', function() utils.wipeout_buffer(0, true) end, { desc = 'Wipeout!' } )
 
 -- LSP
 map('n', '<leader>la', vim.lsp.buf.code_action, { desc = 'Code Actions' })
@@ -65,9 +66,10 @@ map('n', '<leader>ld', vim.lsp.buf.definition, { desc = 'Definition' })
 map('n', '<leader>lf', '<Cmd>lua vim.lsp.buf.format({ async = true })<CR>', { desc = 'Format' })
 map('n', '<leader>li', vim.lsp.buf.implementation, { desc = 'Implementation' })
 map('n', '<leader>lR', vim.lsp.buf.references, { desc = 'References' })
-map('n', '<leader>rn', function() return ':IncRename ' .. vim.fn.expand('<cword>') end, { expr = true })
 map('n', '<leader>ls', vim.lsp.buf.signature_help, { desc = 'Signature' })
+map('n', '<leader>lv', '<cmd>vsplit | lua vim.lsp.buf.definition()<CR>', { desc = 'Definition (vertical)' })
 map('n', '<leader>ly', vim.lsp.buf.type_definition, { desc = 'Type Definition' })
+map('n', '<leader>rn', function() return ':IncRename ' .. vim.fn.expand('<cword>') end, { expr = true })
 map('v', '<leader>la', vim.lsp.buf.code_action, { desc = 'Code Action' })
 map('x', '<leader>lf', '<Cmd>lua vim.lsp.buf.format({ async = true })<CR>', { desc = 'Format' })
 

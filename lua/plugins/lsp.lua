@@ -9,8 +9,10 @@ require('mason').setup()
 
 local mason_lspconfig = require('mason-lspconfig')
 
-local on_attach = function(client)
+local on_attach = function(client, bufnr)
   if client.name == 'tsserver' then client.server_capabilities.documentFormattingProvider = false end
+
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.MiniCompletion.completefunc_lsp')
 end
 
 local servers = {
@@ -58,10 +60,7 @@ lspconfig.yamlls.setup({
   settings = {
     yaml = {
       schemaStore = {
-        -- You must disable built-in schemaStore support if you want to use
-        -- this plugin and its advanced options like `ignore`.
         enable = false,
-        -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
         url = '',
       },
       schemas = require('schemastore').yaml.schemas(),
@@ -78,6 +77,47 @@ lspconfig.eslint.setup({
 
     vim.keymap.set('n', '<leader>lf', '<Cmd>EslintFixAll<CR>', { desc = 'Format' })
   end,
+})
+
+require('lspconfig').gopls.setup({
+  capabilities = capabilities,
+  flags = { debounce_text_changes = 200 },
+  settings = {
+    gopls = {
+      usePlaceholders = true,
+      gofumpt = true,
+      analyses = {
+        nilness = true,
+        unusedparams = true,
+        unusedwrite = true,
+        useany = true,
+      },
+      codelenses = {
+        gc_details = false,
+        generate = true,
+        regenerate_cgo = true,
+        run_govulncheck = true,
+        test = true,
+        tidy = true,
+        upgrade_dependency = true,
+        vendor = true,
+      },
+      experimentalPostfixCompletions = true,
+      completeUnimported = true,
+      staticcheck = true,
+      directoryFilters = { '-.git', '-node_modules' },
+      semanticTokens = true,
+      hints = {
+        assignVariableTypes = true,
+        compositeLiteralFields = true,
+        compositeLiteralTypes = true,
+        constantValues = true,
+        functionTypeParameters = true,
+        parameterNames = true,
+        rangeVariableTypes = true,
+      },
+    },
+  },
 })
 
 -- TypeScript-Tools
