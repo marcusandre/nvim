@@ -12,10 +12,29 @@ local mason_lspconfig = require('mason-lspconfig')
 local on_attach = function(client, bufnr)
   if client.name == 'tsserver' then client.server_capabilities.documentFormattingProvider = false end
 
+  if client.name == 'gopls' then
+    if not client.server_capabilities.semanticTokensProvider then
+      local semantic = client.config.capabilities.textDocument.semanticTokens
+      client.server_capabilities.semanticTokensProvider = {
+        full = true,
+        legend = {
+          tokenTypes = semantic.tokenTypes,
+          tokenModifiers = semantic.tokenModifiers,
+        },
+        range = true,
+      }
+    end
+  end
+
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.MiniCompletion.completefunc_lsp')
 end
 
 local servers = {
+  -- delve = {},
+  -- gofumpt = {},
+  -- goimports = {},
+  -- gomodifytags = {},
+  -- impl = {},
   cssls = {},
   eslint = {},
   gopls = {},
@@ -84,14 +103,7 @@ require('lspconfig').gopls.setup({
   flags = { debounce_text_changes = 200 },
   settings = {
     gopls = {
-      usePlaceholders = true,
       gofumpt = true,
-      analyses = {
-        nilness = true,
-        unusedparams = true,
-        unusedwrite = true,
-        useany = true,
-      },
       codelenses = {
         gc_details = false,
         generate = true,
@@ -102,11 +114,6 @@ require('lspconfig').gopls.setup({
         upgrade_dependency = true,
         vendor = true,
       },
-      experimentalPostfixCompletions = true,
-      completeUnimported = true,
-      staticcheck = true,
-      directoryFilters = { '-.git', '-node_modules' },
-      semanticTokens = true,
       hints = {
         assignVariableTypes = true,
         compositeLiteralFields = true,
@@ -116,6 +123,18 @@ require('lspconfig').gopls.setup({
         parameterNames = true,
         rangeVariableTypes = true,
       },
+      analyses = {
+        fieldalignment = true,
+        nilness = true,
+        unusedparams = true,
+        unusedwrite = true,
+        useany = true,
+      },
+      usePlaceholders = true,
+      completeUnimported = true,
+      staticcheck = true,
+      directoryFilters = { '-.git', '-.vscode', '-.idea', '-.vscode-test', '-node_modules' },
+      semanticTokens = true,
     },
   },
 })

@@ -46,7 +46,7 @@ map('n', '<leader>bq', utils.delete_other_buffers, { desc = 'Delete Others' })
 map('n', '<leader>bQ', utils.delete_all_buffers, { desc = 'Delete All' })
 map('n', '<leader>bs', utils.make_scratch_buffer, { desc = 'Scratch' })
 map('n', '<leader>bw', utils.wipeout_buffer, { desc = 'Wipeout' })
-map('n', '<leader>bW', function() utils.wipeout_buffer(0, true) end, { desc = 'Wipeout!' } )
+map('n', '<leader>bW', function() utils.wipeout_buffer(0, true) end, { desc = 'Wipeout!' })
 
 -- LSP
 map('n', '<leader>la', vim.lsp.buf.code_action, { desc = 'Code Actions' })

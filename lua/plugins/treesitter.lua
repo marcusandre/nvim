@@ -11,6 +11,7 @@ vim.defer_fn(function()
       'go',
       'gomod',
       'gosum',
+      'gowork',
       'html',
       'javascript',
       'json',
