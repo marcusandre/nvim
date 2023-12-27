@@ -148,4 +148,4 @@ map('n', '<leader>tc', '<Cmd>Coverage<CR>', { desc = 'Test: coverage' })
 -- Other
 map('n', '<leader>oc', '<Cmd>colorscheme randomhue<CR>', { desc = 'Random colorscheme' })
 map('n', '<leader>om', '<Cmd>Mason<CR>', { desc = 'Mason' })
-map('n', '<leader>op', '<Cmd>PaqSync<CR>', { desc = 'Paq' })
+map('n', '<leader>ol', '<Cmd>Lazy<CR>', { desc = 'Lazy' })

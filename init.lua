@@ -1,70 +1,41 @@
--- https://github.com/neovim/neovim/pull/22668
-if vim.fn.has('nvim-0.9') == 1 then vim.loader.enable() end
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable', -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
 -- Set <Space> as the leader
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-local bootstrap_paq = require('m.utils').bootstrap_paq
-
-bootstrap_paq({
-  -- Let 'paq' manage itself
-  'savq/paq-nvim',
-  'nvim-lua/plenary.nvim',
-
-  -- Treesitter
-  { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
-  'nvim-treesitter/nvim-treesitter-textobjects',
-
-  -- Editing
-  'numToStr/Comment.nvim',
-  'stevearc/conform.nvim',
-  'tpope/vim-sleuth',
-  'smjonas/inc-rename.nvim',
-  'ethanholz/nvim-lastplace',
-
-  -- Mini
-  'echasnovski/mini.nvim',
-
-  -- LSP
-  'williamboman/mason.nvim',
-  'williamboman/mason-lspconfig.nvim',
-  'neovim/nvim-lspconfig',
-  'folke/neodev.nvim',
-  'j-hui/fidget.nvim',
-  'pmizio/typescript-tools.nvim',
-
-  -- Git
-  'lewis6991/gitsigns.nvim',
-  'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
-
-  -- Testing
-  'vim-test/vim-test',
-  'andythigpen/nvim-coverage',
-
-  -- UI
-  'folke/which-key.nvim',
-  'lukas-reineke/indent-blankline.nvim',
-  'folke/tokyonight.nvim',
-  'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
-
-  -- Others
-  'stevearc/oil.nvim',
-  'tpope/vim-projectionist',
-  'b0o/schemastore.nvim',
+require('lazy').setup({
+  import = 'plugins',
+  install = {
+    missing = true,
+    colorscheme = { 'tokyonight' },
+  },
+  change_detection = {
+    enabled = true,
+    notify = false,
+  },
 })
+
+-- TODO:
+-- 'williamboman/mason.nvim',
+-- 'williamboman/mason-lspconfig.nvim',
+-- 'neovim/nvim-lspconfig',
+-- 'folke/neodev.nvim',
+-- 'j-hui/fidget.nvim',
+-- 'pmizio/typescript-tools.nvim',
 
 -- Core
 require('m.globals')
 require('m.options')
 require('m.keymaps')
-
--- Plugins
-require('plugins.treesitter')
-require('plugins.lsp')
-require('plugins.editing')
-require('plugins.mini')
-require('plugins.ui')
-require('plugins.git')
-require('plugins.testing')
