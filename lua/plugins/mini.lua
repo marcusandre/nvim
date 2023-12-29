@@ -1,5 +1,5 @@
 return {
-  "echasnovski/mini.nvim",
+  'echasnovski/mini.nvim',
   config = function()
     -- mini.extra
     local miniextra = require('mini.extra')
