@@ -1,37 +1,43 @@
--- Oil
-require('oil').setup({
-  default_file_explorer = true,
-  columns = {
-    'type',
-    'icon',
+return {
+  {
+    'numToStr/Comment.nvim',
+    config = function() require('Comment').setup() end,
   },
-  view_options = {
-    show_hidden = true,
-    sort = {
-      { 'type', 'asc' },
-      { 'name', 'asc' },
-    },
+  {
+    'stevearc/conform.nvim',
+    config = function()
+      require('conform').setup({
+        formatters_by_ft = {
+          lua = { 'stylua' },
+          go = { 'goimports', 'gofumpt' },
+        },
+        format_on_save = {
+          timeout_ms = 500,
+          lsp_fallback = true,
+        },
+      })
+    end,
   },
-})
-
--- Conform
-require('conform').setup({
-  formatters_by_ft = {
-    lua = { 'stylua' },
-    go = { 'goimports', 'gofumpt' },
+  {
+    'tpope/vim-sleuth',
+    config = function() end,
   },
-  format_on_save = {
-    timeout_ms = 500,
-    lsp_fallback = true,
+  {
+    'tpope/vim-projectionist',
+    config = function() end,
   },
-})
-
--- Comment
-require('Comment').setup()
-
--- ethanholz/nvim-lastplace
-require('nvim-lastplace').setup({
-  lastplace_ignore_buftype = { 'quickfix', 'nofile', 'help' },
-  lastplace_ignore_filetype = { 'gitcommit', 'gitrebase', 'hgcommit' },
-  lastplace_open_folds = true,
-})
+  {
+    'smjonas/inc-rename.nvim',
+    config = function() end,
+  },
+  {
+    'ethanholz/nvim-lastplace',
+    config = function()
+      require('nvim-lastplace').setup({
+        lastplace_ignore_buftype = { 'quickfix', 'nofile', 'help' },
+        lastplace_ignore_filetype = { 'gitcommit', 'gitrebase', 'hgcommit' },
+        lastplace_open_folds = true,
+      })
+    end,
+  },
+}

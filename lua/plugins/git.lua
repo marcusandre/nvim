@@ -1,13 +1,20 @@
-require('gitsigns').setup({
-  signs = {
-    add = { text = '▎' },
-    change = { text = '▎' },
-    delete = { text = '' },
-    topdelete = { text = '' },
-    changedelete = { text = '▎' },
-    untracked = { text = '▎' },
+return {
+  {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup({
+        numhl = false,
+        linehl = false,
+        watch_gitdir = { interval = 1000 },
+      })
+    end,
   },
-  numhl = false,
-  linehl = false,
-  watch_gitdir = { interval = 1000 },
-})
+  {
+    'tpope/vim-fugitive',
+    config = function() end,
+  },
+  {
+    'tpope/vim-rhubarb',
+    config = function() end,
+  },
+}
