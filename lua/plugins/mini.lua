@@ -1,5 +1,33 @@
+local utils = require('m.utils')
+
 return {
   'echasnovski/mini.nvim',
+  lazy = false,
+  keys = {
+    -- stylua: ignore start
+    { '<leader>z,', '<Cmd>lua MiniExtra.pickers.buf_lines()<CR>', { desc = 'Buffer lines' } },
+    { '<leader>z/', '<Cmd>lua MiniPick.builtin.grep_live()<CR>', { desc = 'Grep' } },
+    { '<leader>z:', '<Cmd>Pick history<CR>', { desc = 'History' } },
+    { '<leader>zD', '<Cmd>Pick diagnostic scope="all"<CR>', { desc = 'Diagnostics (Workspace)' } },
+    { '<leader>zG', utils.pick_file_changes_from_branch, { desc = 'Git changes (branch)' } },
+    { '<leader>zL', '<Cmd>Pick buf_lines scope="all"<CR>', { desc = 'Lines (all)' } },
+    { '<leader>zS', '<Cmd>Pick lsp scope="workspace_symbol"<CR>', { desc = 'Symbols (Workspace)' } },
+    { '<leader>za', '<Cmd>lua MiniExtra.pickers.git_hunks()<CR>', { desc = 'Git Hunks' } },
+    { '<leader>zb', '<Cmd>lua MiniPick.builtin.buffers()<CR>', { desc = 'Buffers' } },
+    { '<leader>zd', '<Cmd>lua MiniExtra.pickers.diagnostic()<CR>', { desc = 'Diagnostics' } },
+    { '<leader>ze', '<Cmd>lua MiniExtra.pickers.explorer()<CR>', { desc = 'Explorer' } },
+    { '<leader>zf', '<Cmd>lua MiniPick.builtin.files()<CR>', { desc = 'Files' } },
+    { '<leader>zg', utils.pick_modified_untracked, { desc = 'Git files' } },
+    { '<leader>zh', '<Cmd>lua MiniPick.builtin.help()<CR>', { desc = 'Help' } },
+    { '<leader>zj', '<Cmd>Pick list scope="jump"<CR>', { desc = 'Jumplist' } },
+    { '<leader>zk', '<Cmd>lua MiniExtra.pickers.keymaps()<CR>', { desc = 'Keymaps' } },
+    { '<leader>zl', '<Cmd>Pick buf_lines scope="current"<CR>', { desc = 'Lines (current)' } },
+    { '<leader>zo', '<Cmd>lua MiniExtra.pickers.oldfiles()<CR>', { desc = 'Oldfiles' } },
+    { '<leader>zr', '<Cmd>lua MiniPick.builtin.resume()<CR>', { desc = 'Resume' } },
+    { '<leader>zs', '<Cmd>Pick lsp scope="document_symbol"<CR>', { desc = 'Symbols (Buffer)' } },
+    { '<leader>zt', '<Cmd>lua MiniExtra.pickers.treesitter()<CR>', { desc = 'Treesitter' } },
+    -- stylua: ignore end
+  },
   config = function()
     -- mini.extra
     local miniextra = require('mini.extra')

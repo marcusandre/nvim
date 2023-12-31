@@ -1,5 +1,8 @@
 return {
   'stevearc/oil.nvim',
+  keys = {
+    { '<leader>oo', '<Cmd>Oil<CR>', desc = 'Oil' },
+  },
   config = function()
     require('oil').setup({
       default_file_explorer = true,

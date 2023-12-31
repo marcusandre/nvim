@@ -12,34 +12,7 @@ map('i', 'kj', '<Esc>', { desc = 'Leave input mode' })
 map('i', '<Tab>', [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true })
 map('i', '<S-Tab>', [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { expr = true })
 
--- Windows
-map(
-  'n',
-  '<M-Left>',
-  '"<Cmd>vertical resize -" . v:count1 . "<CR>"',
-  { expr = true, replace_keycodes = false, desc = 'Decrease window width' }
-)
-map(
-  'n',
-  '<M-Down>',
-  '"<Cmd>resize -"          . v:count1 . "<CR>"',
-  { expr = true, replace_keycodes = false, desc = 'Decrease window height' }
-)
-map(
-  'n',
-  '<M-Up>',
-  '"<Cmd>resize +"          . v:count1 . "<CR>"',
-  { expr = true, replace_keycodes = false, desc = 'Increase window height' }
-)
-map(
-  'n',
-  '<M-Right>',
-  '"<Cmd>vertical resize +" . v:count1 . "<CR>"',
-  { expr = true, replace_keycodes = false, desc = 'Increase window width' }
-)
-
 -- Buffers
-map('n', '<leader>ba', '<Cmd>b#<CR>', { desc = 'Alternate' })
 map('n', '<leader>bd', utils.delete_buffer, { desc = 'Delete' })
 map('n', '<leader>bD', function() utils.delete_buffer(0, true) end, { desc = 'Delete!' })
 map('n', '<leader>bq', utils.delete_other_buffers, { desc = 'Delete Others' })
@@ -60,6 +33,7 @@ map('n', 'gw', '<Cmd>Pick grep pattern="<cword>"<CR>', { desc = 'Grep word (LSP)
 map('n', 'K', vim.lsp.buf.hover, { desc = 'Information' })
 
 -- LSP (Leader)
+-- stylua: ignore start
 map('n', '<leader>la', vim.lsp.buf.code_action, { desc = 'Code Action' })
 map('n', '<leader>lD', vim.lsp.buf.declaration, { desc = 'Declaration' })
 map('n', '<leader>ld', vim.lsp.buf.definition, { desc = 'Definition' })
@@ -72,78 +46,18 @@ map('n', '<leader>ly', vim.lsp.buf.type_definition, { desc = 'Type Definition' }
 map('n', '<leader>rn', function() return ':IncRename ' .. vim.fn.expand('<cword>') end, { expr = true })
 map('v', '<leader>la', vim.lsp.buf.code_action, { desc = 'Code Action' })
 map('x', '<leader>lf', '<Cmd>lua vim.lsp.buf.format({ async = true })<CR>', { desc = 'Format' })
+-- stylua: ignore end
 
 -- Diagnostics
+-- stylua: ignore start
 map('n', '[d', vim.diagnostic.goto_prev, { desc = 'Previous Diagnostic' })
 map('n', ']d', vim.diagnostic.goto_next, { desc = 'Next Diagnostic' })
-map(
-  'n',
-  '[e',
-  function() vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR }) end,
-  { desc = 'Previous Diagnostic' }
-)
-map(
-  'n',
-  ']e',
-  function() vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR }) end,
-  { desc = 'Next Diagnostic' }
-)
-
--- Git
-map('n', '<leader>gg', '<Cmd>Git<CR>', { desc = 'Git' })
-
-map('n', '<leader>gA', '<Cmd>lua require("gitsigns").stage_buffer()<CR>', { desc = 'Add buffer' })
-map('n', '<leader>ga', '<Cmd>lua require("gitsigns").stage_hunk()<CR>', { desc = 'Add (stage) hunk' })
-map('n', '<leader>gb', '<Cmd>lua require("gitsigns").blame_line()<CR>', { desc = 'Blame line' })
-map('n', '<leader>gp', '<Cmd>lua require("gitsigns").preview_hunk()<CR>', { desc = 'Preview hunk' })
-map('n', '<leader>gq', '<Cmd>lua require("gitsigns").setqflist()<CR>:copen<CR>', { desc = 'Quickfix hunks' })
-map('n', '<leader>gu', '<Cmd>lua require("gitsigns").undo_stage_hunk()<CR>', { desc = 'Undo stage hunk' })
-map('n', '<leader>gX', '<Cmd>lua require("gitsigns").reset_buffer()<CR>', { desc = 'Discard buffer' })
-map('n', '<leader>gx', '<Cmd>lua require("gitsigns").reset_hunk()<CR>', { desc = 'Discard hunk' })
-
-map('n', '[h', '<Cmd>Gitsigns prev_hunk<CR>zvzz', { desc = 'Goto previous hunk' })
-map('n', ']h', '<Cmd>Gitsigns next_hunk<CR>zvzz', { desc = 'Goto next hunk' })
-
--- Pick
-map('n', '<leader>z,', '<Cmd>lua MiniExtra.pickers.buf_lines()<CR>', { desc = 'Buffer lines' })
-map('n', '<leader>z/', '<Cmd>lua MiniPick.builtin.grep_live()<CR>', { desc = 'Grep' })
-map('n', '<leader>z:', '<Cmd>Pick history<CR>', { desc = 'History' })
-map('n', '<leader>zD', '<Cmd>Pick diagnostic scope="all"<CR>', { desc = 'Diagnostics (Workspace)' })
-map('n', '<leader>zG', utils.pick_file_changes_from_branch, { desc = 'Git changes (branch)' })
-map('n', '<leader>zL', '<Cmd>Pick buf_lines scope="all"<CR>', { desc = 'Lines (all)' })
-map('n', '<leader>zS', '<Cmd>Pick lsp scope="workspace_symbol"<CR>', { desc = 'Symbols (Workspace)' })
-map('n', '<leader>za', '<Cmd>lua MiniExtra.pickers.git_hunks()<CR>', { desc = 'Git Hunks' })
-map('n', '<leader>zb', '<Cmd>lua MiniPick.builtin.buffers()<CR>', { desc = 'Buffers' })
-map('n', '<leader>zd', '<Cmd>lua MiniExtra.pickers.diagnostic()<CR>', { desc = 'Diagnostics' })
-map('n', '<leader>ze', '<Cmd>lua MiniExtra.pickers.explorer()<CR>', { desc = 'Explorer' })
-map('n', '<leader>zf', '<Cmd>lua MiniPick.builtin.files()<CR>', { desc = 'Files' })
-map('n', '<leader>zg', utils.pick_modified_untracked, { desc = 'Git files' })
-map('n', '<leader>zh', '<Cmd>lua MiniPick.builtin.help()<CR>', { desc = 'Help' })
-map('n', '<leader>zj', '<Cmd>Pick list scope="jump"<CR>', { desc = 'Jumplist' })
-map('n', '<leader>zk', '<Cmd>lua MiniExtra.pickers.keymaps()<CR>', { desc = 'Keymaps' })
-map('n', '<leader>zl', '<Cmd>Pick buf_lines scope="current"<CR>', { desc = 'Lines (current)' })
-map('n', '<leader>zo', '<Cmd>lua MiniExtra.pickers.oldfiles()<CR>', { desc = 'Oldfiles' })
-map('n', '<leader>zr', '<Cmd>lua MiniPick.builtin.resume()<CR>', { desc = 'Resume' })
-map('n', '<leader>zs', '<Cmd>Pick lsp scope="document_symbol"<CR>', { desc = 'Symbols (Buffer)' })
-map('n', '<leader>zt', '<Cmd>lua MiniExtra.pickers.treesitter()<CR>', { desc = 'Treesitter' })
-
--- Oil
-map('n', '<leader>oo', '<Cmd>Oil<CR>', { desc = 'Oil' })
+map('n', '[e', function() vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR }) end, { desc = 'Previous Diagnostic' })
+map('n', ']e', function() vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR }) end, { desc = 'Next Diagnostic' })
+-- stylua: ignore end
 
 -- Quickfix
 map('n', '<leader>qq', utils.toggle_quickfix, { desc = 'Quickfix' })
-
--- Testing
-map('n', '<leader>tF', '<Cmd>TestFile --coverage<CR>', { desc = 'Test: file (coverage)' })
-map('n', '<leader>tL', '<Cmd>TestLast --coverage<CR>', { desc = 'Test: last (coverage)' })
-map('n', '<leader>tN', '<Cmd>TestNearest --coverage<CR>', { desc = 'Test: nearest (coverage)' })
-map('n', '<leader>tS', '<Cmd>TestSuite --coverage<CR>', { desc = 'Test: suite (coverage)' })
-map('n', '<leader>tf', '<Cmd>TestFile<CR>', { desc = 'Test: file' })
-map('n', '<leader>tl', '<Cmd>TestLast<CR>', { desc = 'Test: last' })
-map('n', '<leader>tn', '<Cmd>TestNearest<CR>', { desc = 'Test: nearest' })
-map('n', '<leader>ts', '<Cmd>TestSuite<CR>', { desc = 'Test: suite' })
-map('n', '<leader>tv', '<Cmd>TestVisit<CR>', { desc = 'Test: visit' })
-map('n', '<leader>tc', '<Cmd>Coverage<CR>', { desc = 'Test: coverage' })
 
 -- Other
 map('n', '<leader>oc', '<Cmd>colorscheme randomhue<CR>', { desc = 'Random colorscheme' })
