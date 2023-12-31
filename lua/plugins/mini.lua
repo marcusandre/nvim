@@ -14,6 +14,9 @@ return {
       },
     })
 
+    -- mini.align
+    require('mini.align').setup()
+
     -- mini.basics
     require('mini.basics').setup({
       options = {

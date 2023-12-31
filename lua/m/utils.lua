@@ -2,26 +2,6 @@ local M = {}
 
 local is_inside_work_tree = {}
 
---- Paq
-M.clone_paq = function()
-  local path = vim.fn.stdpath('data') .. '/site/pack/paqs/start/paq-nvim'
-  local is_installed = vim.fn.empty(vim.fn.glob(path)) == 0
-  if not is_installed then
-    vim.fn.system({ 'git', 'clone', '--depth=1', 'https://github.com/savq/paq-nvim.git', path })
-    return true
-  end
-end
-
-M.bootstrap_paq = function(packages)
-  local first_install = M.clone_paq()
-  vim.cmd.packadd('paq-nvim')
-  local paq = require('paq')
-  if first_install then vim.notify('Installing plugins... If prompted, hit Enter to continue.') end
-
-  paq(packages)
-  paq.install()
-end
-
 --- LSP
 M.file_on_rename = function(from, to)
   local ok, clients = pcall(vim.lsp.get_active_clients)
@@ -97,6 +77,24 @@ M.toggle_quickfix = function()
     return
   end
   if not vim.tbl_isempty(vim.fn.getqflist()) then vim.cmd('copen') end
+end
+
+--- Telescope
+M.project_files = function()
+  local opts = {}
+  local builtin = require('telescope.builtin')
+
+  local cwd = vim.fn.getcwd()
+  if is_inside_work_tree[cwd] == nil then
+    vim.fn.system('git rev-parse --is-inside-work-tree')
+    is_inside_work_tree[cwd] = vim.v.shell_error == 0
+  end
+
+  if is_inside_work_tree[cwd] then
+    builtin.git_files(opts)
+  else
+    builtin.find_files(opts)
+  end
 end
 
 --- Mini.Pick
