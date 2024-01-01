@@ -1,7 +1,7 @@
 return {
   {
     'numToStr/Comment.nvim',
-    config = function() require('Comment').setup() end,
+    opts = {},
   },
   {
     'stevearc/conform.nvim',
@@ -19,8 +19,9 @@ return {
     end,
   },
   {
-    'tpope/vim-sleuth',
-    config = function() end,
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    opts = {},
   },
   {
     'tpope/vim-projectionist',
@@ -28,7 +29,7 @@ return {
   },
   {
     'smjonas/inc-rename.nvim',
-    config = function() end,
+    opts = {},
   },
   {
     'ethanholz/nvim-lastplace',

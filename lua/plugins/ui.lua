@@ -26,16 +26,16 @@ return {
   {
     'lukas-reineke/indent-blankline.nvim',
     main = 'ibl',
-    config = function()
-      require('ibl').setup({
-        enabled = false,
-        scope = {
-          enabled = false,
-        },
-        indent = {
-          char = '▏',
-        },
-      })
-    end,
+    event = 'VeryLazy',
+    dependencies = 'tpope/vim-sleuth',
+    opts = {
+      indent = {
+        char = '▏',
+      },
+      scope = {
+        show_start = false,
+        show_end = false,
+      },
+    },
   },
 }
