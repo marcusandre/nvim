@@ -11,22 +11,23 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- TODO:
--- 'williamboman/mason.nvim',
--- 'williamboman/mason-lspconfig.nvim',
--- 'neovim/nvim-lspconfig',
--- 'folke/neodev.nvim',
--- 'j-hui/fidget.nvim',
--- 'pmizio/typescript-tools.nvim',
-
-require('lazy').setup({
-  import = 'plugins',
+require('lazy').setup('plugins', {
   install = {
     missing = true,
-    colorscheme = { 'tokyonight' },
+    colorscheme = { 'tokyonight-moon' },
   },
-  change_detection = {
-    enabled = true,
-    notify = false,
+  change_detection = { notify = false },
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        'gzip',
+        'netrwPlugin',
+        'rplugin',
+        'tarPlugin',
+        'tohtml',
+        'tutor',
+        'zipPlugin',
+      },
+    },
   },
 })

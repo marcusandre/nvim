@@ -65,4 +65,3 @@ vim.opt.complete:remove('t')      -- Don't use tags for completion
 
 -- Automatically resize all vim buffers on window resize
 vim.api.nvim_command('autocmd VimResized * wincmd =')
-vim.cmd([[colorscheme tokyonight]])

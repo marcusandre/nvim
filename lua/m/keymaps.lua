@@ -24,12 +24,6 @@ map('n', '<leader>bW', function() utils.wipeout_buffer(0, true) end, { desc = 'W
 -- LSP
 map('n', '<leader>la', vim.lsp.buf.code_action, { desc = 'Code Actions' })
 map('n', '<leader>lr', vim.lsp.buf.rename, { desc = 'Rename' })
-map('n', 'gD', '<Cmd>Pick lsp scope="declaration"<CR>', { desc = 'Declaration (LSP)' })
-map('n', 'gd', '<Cmd>Pick lsp scope="definition"<CR>', { desc = 'Definition (LSP)' })
-map('n', 'gi', '<Cmd>Pick lsp scope="implementation"<CR>', { desc = 'Implementation (LSP)' })
-map('n', 'gl', '<Cmd>Pick lsp scope="type_definition"<CR>', { desc = 'Type definition (LSP)' })
-map('n', 'gr', '<Cmd>Pick lsp scope="references"<CR>', { desc = 'References (LSP)' })
-map('n', 'gw', '<Cmd>Pick grep pattern="<cword>"<CR>', { desc = 'Grep word (LSP)' })
 map('n', 'K', vim.lsp.buf.hover, { desc = 'Information' })
 
 -- LSP (Leader)
@@ -43,7 +37,6 @@ map('n', '<leader>lR', vim.lsp.buf.references, { desc = 'References' })
 map('n', '<leader>ls', vim.lsp.buf.signature_help, { desc = 'Signature' })
 map('n', '<leader>lv', '<cmd>vsplit | lua vim.lsp.buf.definition()<CR>', { desc = 'Definition (vertical)' })
 map('n', '<leader>ly', vim.lsp.buf.type_definition, { desc = 'Type Definition' })
-map('n', '<leader>rn', function() return ':IncRename ' .. vim.fn.expand('<cword>') end, { expr = true })
 map('v', '<leader>la', vim.lsp.buf.code_action, { desc = 'Code Action' })
 map('x', '<leader>lf', '<Cmd>lua vim.lsp.buf.format({ async = true })<CR>', { desc = 'Format' })
 -- stylua: ignore end
@@ -61,5 +54,6 @@ map('n', '<leader>qq', utils.toggle_quickfix, { desc = 'Quickfix' })
 
 -- Other
 map('n', '<leader>oc', '<Cmd>colorscheme randomhue<CR>', { desc = 'Random colorscheme' })
+map('n', '<leader>ot', '<Cmd>colorscheme tokyonight-moon<CR>', { desc = 'Tokyonight Moon' })
 map('n', '<leader>om', '<Cmd>Mason<CR>', { desc = 'Mason' })
 map('n', '<leader>ol', '<Cmd>Lazy<CR>', { desc = 'Lazy' })

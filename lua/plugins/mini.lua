@@ -86,7 +86,7 @@ return {
     })
 
     -- mini.pairs
-    -- require('mini.pairs').setup()
+    require('mini.pairs').setup()
 
     -- mini.pick
     local pick = require('mini.pick')
