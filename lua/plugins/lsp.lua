@@ -3,7 +3,6 @@ return {
   dependencies = {
     { 'folke/neodev.nvim', opts = {} },
     { 'williamboman/mason.nvim', build = ':MasonUpdate', opts = {} },
-    { 'j-hui/fidget.nvim', opts = {} },
     'williamboman/mason-lspconfig.nvim',
   },
   opts = {

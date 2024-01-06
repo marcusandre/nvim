@@ -4,7 +4,10 @@ return {
   {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.5',
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'folke/trouble.nvim',
+    },
     keys = {
       -- stylua: ignore start
       { ',',          '<Cmd>Telescope current_buffer_fuzzy_find<CR>', desc = 'Buffer lines' },
@@ -34,6 +37,19 @@ return {
       { 'gw',         '<Cmd>Telescope grep_string<CR>',               desc = 'Grep word (LSP)' },
       -- stylua: ignore end
     },
+    config = function()
+      local telescope = require('telescope')
+      local trouble = require('trouble.providers.telescope')
+
+      telescope.setup({
+        defaults = {
+          mappings = {
+            i = { ['<c-t>'] = trouble.open_with_trouble },
+            n = { ['<c-t>'] = trouble.open_with_trouble },
+          },
+        },
+      })
+    end,
   },
   {
     'nvim-telescope/telescope-frecency.nvim',

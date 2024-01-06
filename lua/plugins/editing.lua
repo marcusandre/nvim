@@ -18,11 +18,11 @@ return {
       })
     end,
   },
-  {
-    'windwp/nvim-autopairs',
-    event = 'InsertEnter',
-    opts = {},
-  },
+  -- {
+  --   'windwp/nvim-autopairs',
+  --   event = 'InsertEnter',
+  --   opts = {},
+  -- },
   {
     'tpope/vim-projectionist',
     config = function() end,
