@@ -28,6 +28,7 @@ return {
           'markdown',
           'python',
           'regex',
+          'ron',
           'rust',
           'scss',
           'sql',
