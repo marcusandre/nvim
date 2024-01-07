@@ -1,7 +1,8 @@
 return {
-  'lewis6991/gitsigns.nvim',
-  event = { 'BufReadPre', 'BufNewFile' },
-  keys = {
+  {
+    'lewis6991/gitsigns.nvim',
+    event = { 'BufReadPre', 'BufNewFile' },
+    keys = {
       -- stylua: ignore start
       { '<leader>gA', '<Cmd>lua require("gitsigns").stage_buffer()<CR>', desc = 'Add buffer' },
       { '<leader>ga', '<Cmd>lua require("gitsigns").stage_hunk()<CR>', desc = 'Add (stage) hunk' },
@@ -14,19 +15,33 @@ return {
       { '<leader>gx', '<Cmd>lua require("gitsigns").reset_hunk()<CR>', desc = 'Discard hunk' },
       { '[h', '<Cmd>Gitsigns prev_hunk<CR>zvzz', desc = 'Goto previous hunk' },
       { ']h', '<Cmd>Gitsigns next_hunk<CR>zvzz', desc = 'Goto next hunk' },
-    -- stylua: ignore end
+      -- stylua: ignore end
+    },
+    opts = {
+      max_file_length = 100000,
+      numhl = false,
+      linehl = false,
+      watch_gitdir = { interval = 1000 },
+      current_line_blame = false,
+      current_line_blame_formatter_opts = {
+        relative_time = true,
+      },
+      current_line_blame_opts = {
+        delay = 50,
+      },
+    },
   },
-  opts = {
-    max_file_length = 100000,
-    numhl = false,
-    linehl = false,
-    watch_gitdir = { interval = 1000 },
-    current_line_blame = false,
-    current_line_blame_formatter_opts = {
-      relative_time = true,
+  {
+    'kdheepak/lazygit.nvim',
+    keys = {
+      { '<leader>gg', '<Cmd>LazyGit<CR>', desc = 'LazyGit' },
     },
-    current_line_blame_opts = {
-      delay = 50,
+    dependencies = {
+      'nvim-lua/plenary.nvim',
     },
+  },
+  {
+    'ruifm/gitlinker.nvim',
+    config = true,
   },
 }
