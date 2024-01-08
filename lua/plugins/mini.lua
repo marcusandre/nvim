@@ -61,7 +61,7 @@ return {
 
     -- mini.bracketed
     require('mini.bracketed').setup({
-      diagnostic = { suffix = '' },
+      treesitter = { suffix = '' },
     })
 
     -- mini.bufremove

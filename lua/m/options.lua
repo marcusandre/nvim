@@ -1,37 +1,39 @@
 -- General
 -- stylua: ignore start
-vim.o.undofile       = true  -- Enable persitent undo
+vim.o.undofile        = true  -- Enable persitent undo
 
-vim.o.backup         = false -- Don't store backup while overwriting the file
-vim.o.writebackup    = false -- Don't store backup while overwriting the file
+vim.o.backup          = false -- Don't store backup while overwriting the file
+vim.o.writebackup     = false -- Don't store backup while overwriting the file
 
-vim.o.mouse          = 'a'   -- Enable mouse for all available modes
+vim.o.mouse           = 'a'   -- Enable mouse for all available modes
 -- stylua: ignore end
 
 -- UI
 -- stylua: ignore start
-vim.o.breakindent    = true  -- Indend wrapped lines to match line start
-vim.o.cursorline     = true  -- Highlight current line
-vim.o.laststatus     = 3     -- Statusbar per window
-vim.o.linebreak      = true  -- Wrap long lines at 'breakat'
-vim.o.number         = true  -- Show line numbers
-vim.o.relativenumber = true  -- Show relative line numbers
-vim.o.ruler          = false -- Don't show cursor position in command line
-vim.o.showmode       = false -- Don't show mode in command line
-vim.o.splitbelow     = true  -- Horizontal splits will be shown below
-vim.o.splitright     = true  -- Vertical splits will be shown to the right
-vim.o.termguicolors  = true  -- Enable gui colors
-vim.o.wrap           = false -- Display long lines as just one line
+vim.o.breakindent     = true  -- Indend wrapped lines to match line start
+vim.o.cursorline      = true  -- Highlight current line
+vim.o.laststatus      = 3     -- Statusbar per window
+vim.o.linebreak       = true  -- Wrap long lines at 'breakat'
+vim.o.number          = true  -- Show line numbers
+vim.o.relativenumber  = true  -- Show relative line numbers
+vim.o.ruler           = false -- Don't show cursor position in command line
+vim.o.showmode        = false -- Don't show mode in command line
+vim.o.splitbelow      = true  -- Horizontal splits will be shown below
+vim.o.splitright      = true  -- Vertical splits will be shown to the right
+vim.o.termguicolors   = true  -- Enable gui colors
+vim.o.wrap            = false -- Display long lines as just one line
+vim.opt.termguicolors = true  -- Enable 24-bit RGB colors
+-- stylua: ignore end
 
 -- vim.o.pumblend       = 10 -- Make builtin completion menus slightly transparent
 -- vim.o.pumheight      = 10 -- Make popup menu smaller
 -- vim.o.winblend       = 10 -- Make floating windows slightly transparent
 
-vim.o.listchars      = 'extends:…,precedes:…,nbsp:␣' -- Define which helper symbols to show
-vim.o.list           = true -- Show some helper symbols
+vim.o.listchars = 'extends:…,precedes:…,nbsp:␣' -- Define which helper symbols to show
+vim.o.list = true -- Show some helper symbols
 
 -- Enable syntax highlighing if it wasn't already
-if vim.fn.exists("syntax_on") ~= 1 then vim.cmd([[syntax enable]]) end
+if vim.fn.exists('syntax_on') ~= 1 then vim.cmd([[syntax enable]]) end
 -- stylua: ignore end
 
 -- Editing
