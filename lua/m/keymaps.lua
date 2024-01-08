@@ -43,8 +43,6 @@ map('x', '<leader>lf', '<Cmd>lua vim.lsp.buf.format({ async = true })<CR>', { de
 
 -- Diagnostics
 -- stylua: ignore start
-map('n', '[d', vim.diagnostic.goto_prev, { desc = 'Previous Diagnostic' })
-map('n', ']d', vim.diagnostic.goto_next, { desc = 'Next Diagnostic' })
 map('n', '[e', function() vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR }) end, { desc = 'Previous Diagnostic' })
 map('n', ']e', function() vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR }) end, { desc = 'Next Diagnostic' })
 -- stylua: ignore end
