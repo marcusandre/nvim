@@ -31,5 +31,14 @@ return {
 
     -- mini.indentscope
     require("mini.indentscope").setup({ symbol = "│" })
+
+    -- mini.notify
+    local MiniNotify = require("mini.notify")
+
+    MiniNotify.setup({
+      lsp_progress = {
+        enable = false,
+      },
+    })
   end,
 }
