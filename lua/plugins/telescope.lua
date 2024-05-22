@@ -11,6 +11,11 @@ return {
     local telesope = require("telescope")
 
     telesope.setup({
+      pickers = {
+        find_files = {
+          hidden = true,
+        },
+      },
       extensions = {
         fzf = {},
         ["ui-select"] = {
@@ -27,7 +32,8 @@ return {
     vim.keymap.set("n", "<leader>/", builtin.current_buffer_fuzzy_find, { desc = "Fuzzy Find" })
     vim.keymap.set("n", "<leader>fQ", builtin.quickfixhistory, { desc = "Quickfix (history)" })
     vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Buffers" })
-    vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Files" })
+    vim.keymap.set("n", "<leader>ff", builtin.git_files, { desc = "Files (Git)" })
+    vim.keymap.set("n", "<leader>fF", builtin.find_files, { desc = "Files" })
     vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Live Grep" })
     vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Help" })
     vim.keymap.set("n", "<leader>fq", builtin.quickfix, { desc = "Quickfix" })
