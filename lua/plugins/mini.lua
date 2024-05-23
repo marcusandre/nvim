@@ -30,7 +30,7 @@ return {
     vim.keymap.set("n", "<leader>bo", utils.delete_other_buffers, { desc = "Delete Other Buffers" })
 
     -- mini.indentscope
-    require("mini.indentscope").setup({ symbol = "│" })
+    require("mini.indentscope").setup()
 
     -- mini.notify
     local MiniNotify = require("mini.notify")
