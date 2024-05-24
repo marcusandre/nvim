@@ -27,21 +27,6 @@ return {
           { name = "path" },
           { name = "buffer" },
         },
-        sorting = {
-          priority_weight = 2,
-          comparators = {
-            compare.kind,
-            compare.offset,
-            compare.exact,
-            -- compare.scopes,
-            compare.score,
-            compare.recently_used,
-            compare.locality,
-            -- compare.sort_text,
-            compare.length,
-            compare.order,
-          },
-        },
         mapping = {
           ["<C-Space>"] = cmp.mapping.complete(),
           ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
