@@ -141,37 +141,27 @@ return {
     vim.api.nvim_create_autocmd("LspAttach", {
       callback = function(args)
         local bufnr = args.buf
-        local methods = vim.lsp.protocol.Methods
-        local client = assert(vim.lsp.get_client_by_id(args.data.client_id), "must have valid client")
+        local builtin = require("telescope.builtin")
+        local map = require("m.utils").map
 
         vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
 
-        vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = 0, desc = "References" })
-        vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, { buffer = 0, desc = "Type Definition" })
-        vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, { buffer = 0, desc = "Diagnostics" })
+        map("n", "gD", vim.lsp.buf.declaration, { buffer = 0, desc = "Declaration" })
+        map("n", "gd", builtin.lsp_definitions, { buffer = 0, desc = "LSP Definitions" })
+        map("n", "gr", builtin.lsp_references, { buffer = 0, desc = "LSP References" })
+        map("n", "<C-k>", vim.lsp.buf.signature_help, { buffer = 0, desc = "Signature Help" })
 
-        if client.supports_method(methods.textDocument_definition) then
-          vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0, desc = "Definition" })
-        end
+        map("n", "<leader>le", vim.diagnostic.open_float, { buffer = 0, desc = "Diagnostics" })
+        map("n", "<leader>lr", vim.lsp.buf.rename, { buffer = 0, desc = "Rename" })
+        map("n", "<space>li", builtin.lsp_implementations, { buffer = 0, desc = "LSP Implementations" })
+        map("n", "<space>ls", builtin.lsp_document_symbols, { buffer = 0, desc = "LSP Symbols" })
+        map("n", "<space>lt", builtin.lsp_type_definitions, { buffer = 0, desc = "LSP Type Definitions" })
+        map("n", "<space>lw", builtin.lsp_dynamic_workspace_symbols, { buffer = 0, desc = "LSP Workspace Symbols" })
 
-        if client.supports_method(methods.textDocument_declaration) then
-          vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = 0, desc = "Declaration" })
-        end
-
-        if client.supports_method(methods.textDocument_codeAction) then
-          vim.keymap.set({ "n", "v" }, "<space>la", vim.lsp.buf.code_action, { buffer = 0, desc = "Code Action" })
-        end
-
-        if client.supports_method(methods.textDocument_rename) then
-          vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { buffer = 0, desc = "Rename" })
-        end
-
-        if client.supports_method(methods.textDocument_signatureHelp) then
-          vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, { buffer = 0, desc = "Signature Help" })
-        end
+        map({ "n", "v" }, "<space>la", vim.lsp.buf.code_action, { buffer = 0, desc = "Code Action" })
 
         local filetype = vim.bo[bufnr].filetype
-
+        local client = assert(vim.lsp.get_client_by_id(args.data.client_id), "must have valid client")
         if disable_semantic_tokens[filetype] then
           client.server_capabilities.semanticTokensProvider = nil
         end
