@@ -119,9 +119,7 @@ return {
 
     vim.list_extend(ensure_installed, servers_to_install)
 
-    require("mason-tool-installer").setup({
-      ensure_installed = ensure_installed,
-    })
+    require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
     for name, config in pairs(servers) do
       if config == true then
@@ -146,19 +144,23 @@ return {
 
         vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
 
-        map("n", "gD", vim.lsp.buf.declaration, { buffer = 0, desc = "Declaration" })
-        map("n", "gd", builtin.lsp_definitions, { buffer = 0, desc = "LSP Definitions" })
-        map("n", "gr", builtin.lsp_references, { buffer = 0, desc = "LSP References" })
-        map("n", "<C-k>", vim.lsp.buf.signature_help, { buffer = 0, desc = "Signature Help" })
+        -- builtin
+        map("n", "gd", vim.lsp.buf.definition, { buffer = 0 })
+        map("n", "gD", vim.lsp.buf.declaration, { buffer = 0 })
+        map("n", "gT", vim.lsp.buf.type_definition, { buffer = 0 })
+        map("n", "grn", vim.lsp.buf.rename, { buffer = 0 })
+        map("n", "grr", vim.lsp.buf.references, { buffer = 0 })
+        map("n", "<C-k>", vim.lsp.buf.signature_help, { buffer = 0 })
+        map({ "n", "v" }, "gra", vim.lsp.buf.code_action, { buffer = 0 })
 
+        -- telescope
+        map("n", "<leader>ld", builtin.lsp_definitions, { buffer = 0, desc = "Definitions" })
         map("n", "<leader>le", vim.diagnostic.open_float, { buffer = 0, desc = "Diagnostics" })
-        map("n", "<leader>lr", vim.lsp.buf.rename, { buffer = 0, desc = "Rename" })
-        map("n", "<space>li", builtin.lsp_implementations, { buffer = 0, desc = "LSP Implementations" })
-        map("n", "<space>ls", builtin.lsp_document_symbols, { buffer = 0, desc = "LSP Symbols" })
-        map("n", "<space>lt", builtin.lsp_type_definitions, { buffer = 0, desc = "LSP Type Definitions" })
-        map("n", "<space>lw", builtin.lsp_dynamic_workspace_symbols, { buffer = 0, desc = "LSP Workspace Symbols" })
-
-        map({ "n", "v" }, "<space>la", vim.lsp.buf.code_action, { buffer = 0, desc = "Code Action" })
+        map("n", "<leader>li", builtin.lsp_implementations, { buffer = 0, desc = "Implementations" })
+        map("n", "<leader>lr", builtin.lsp_references, { buffer = 0, desc = "References" })
+        map("n", "<leader>ls", builtin.lsp_document_symbols, { buffer = 0, desc = "Symbols" })
+        map("n", "<leader>lt", builtin.lsp_type_definitions, { buffer = 0, desc = "Type Definitions" })
+        map("n", "<leader>lw", builtin.lsp_dynamic_workspace_symbols, { buffer = 0, desc = "Workspace Symbols" })
 
         local filetype = vim.bo[bufnr].filetype
         local client = assert(vim.lsp.get_client_by_id(args.data.client_id), "must have valid client")
