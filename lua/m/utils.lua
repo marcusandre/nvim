@@ -16,10 +16,8 @@ M.toggle_inlay_hints = function(opts)
 end
 
 M.toggle_theme = function()
-  local current_background = vim.go.background
-
-  if current_background == "dark" then
-    vim.cmd([[colorscheme default]])
+  if vim.go.background == "dark" then
+    vim.cmd([[colorscheme dayfox]])
     vim.go.background = "light"
   else
     vim.cmd([[colorscheme nightfox]])
