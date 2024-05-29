@@ -1,5 +1,7 @@
+local set = vim.opt_local
+
 local function augroup(name)
-  return vim.api.nvim_create_augroup("custom_" .. name, { clear = true })
+  return vim.api.nvim_create_augroup("m_" .. name, { clear = true })
 end
 
 -- Highlight on yank
@@ -29,6 +31,18 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     vim.opt_local.wrap = true
     vim.opt_local.spell = true
+  end,
+})
+
+-- Set options for terminal buffers
+vim.api.nvim_create_autocmd("TermOpen", {
+  group = augroup("term_open"),
+  callback = function()
+    vim.bo.filetype = "terminal"
+
+    set.number = false
+    set.relativenumber = false
+    set.scrolloff = 0
   end,
 })
 
