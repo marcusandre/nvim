@@ -144,23 +144,21 @@ return {
 
         vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
 
-        -- builtin
-        map("n", "gd", vim.lsp.buf.definition, { buffer = 0 })
         map("n", "gD", vim.lsp.buf.declaration, { buffer = 0 })
         map("n", "gT", vim.lsp.buf.type_definition, { buffer = 0 })
-        map("n", "grn", vim.lsp.buf.rename, { buffer = 0 })
-        map("n", "grr", vim.lsp.buf.references, { buffer = 0 })
         map("n", "<C-k>", vim.lsp.buf.signature_help, { buffer = 0 })
-        map({ "n", "v" }, "gra", vim.lsp.buf.code_action, { buffer = 0 })
-
-        -- telescope
-        map("n", "<leader>ld", builtin.lsp_definitions, { buffer = 0, desc = "Definitions" })
         map("n", "<leader>le", vim.diagnostic.open_float, { buffer = 0, desc = "Diagnostics" })
+        map("n", "<leader>lr", vim.lsp.buf.rename, { buffer = 0 })
+
+        map("n", "gd", builtin.lsp_definitions, { buffer = 0 })
+        map("n", "gr", builtin.lsp_references, { buffer = 0 })
+        map("n", "<leader>ld", builtin.lsp_definitions, { buffer = 0, desc = "Definitions" })
         map("n", "<leader>li", builtin.lsp_implementations, { buffer = 0, desc = "Implementations" })
-        map("n", "<leader>lr", builtin.lsp_references, { buffer = 0, desc = "References" })
         map("n", "<leader>ls", builtin.lsp_document_symbols, { buffer = 0, desc = "Symbols" })
         map("n", "<leader>lt", builtin.lsp_type_definitions, { buffer = 0, desc = "Type Definitions" })
         map("n", "<leader>lw", builtin.lsp_dynamic_workspace_symbols, { buffer = 0, desc = "Workspace Symbols" })
+
+        map({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, { buffer = 0 })
 
         local filetype = vim.bo[bufnr].filetype
         local client = assert(vim.lsp.get_client_by_id(args.data.client_id), "must have valid client")
