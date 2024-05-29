@@ -18,11 +18,11 @@ map("n", "gp", '"+p', { desc = "Paste from system clipboard" })
 map("x", "gp", '"+P', { desc = "Paste from system clipboard" })
 
 -- Toggle: UI
-map("n", "<leader>c", utils.toggle_qf, { desc = "Toggle Quickfix" })
+map("n", "<leader>cc", utils.toggle_qf, { desc = "Toggle Quickfix" })
+map("n", "<leader>ii", utils.toggle_inlay_hints, { desc = "Toggle Inlay hints" })
 map("n", "<leader>tt", "<Cmd>vertical terminal<CR>", { desc = "Open Terminal" })
 
 -- Toggle: Options
-map("n", "\\i", utils.toggle_inlay_hints, { desc = "Toggle Inlay hints" })
 map("n", "\\n", "<Cmd>setlocal number!<CR>", { desc = "Toggle Number" })
 map("n", "\\r", "<Cmd>setlocal relativenumber!<CR>", { desc = "Toggle Relative Number" })
 map("n", "\\s", "<Cmd>setlocal spell!<CR>", { desc = "Toggle Spell" })

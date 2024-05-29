@@ -11,8 +11,8 @@ end
 
 -- Toggles
 M.toggle_inlay_hints = function(opts)
-  opts = opts or {}
-  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}), opts)
+  opts = opts or { bufnr = 0 }
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(opts), opts)
 end
 
 M.toggle_theme = function()
