@@ -23,3 +23,5 @@ vim.opt.showmatch = true
 vim.opt.matchtime = 2
 
 vim.opt.cursorline = true
+
+vim.opt.wrap = false
