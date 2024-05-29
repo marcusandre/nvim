@@ -3,6 +3,7 @@ local utils = require("m.utils")
 
 -- General
 map("n", "n", "nzz")
+map("n", "N", "Nzz")
 map("i", "kj", "<ESC>", { desc = "Quit input mode" })
 map("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 map("n", "<leader><leader>", "<Cmd>:b#<CR>", { desc = "Alternate Buffer" })
@@ -16,15 +17,16 @@ map({ "n", "x" }, "gy", '"+y', { desc = "Copy to system clipboard" })
 map("n", "gp", '"+p', { desc = "Paste from system clipboard" })
 map("x", "gp", '"+P', { desc = "Paste from system clipboard" })
 
--- Toggle UI
-map("n", "<leader>tt", utils.toggle_theme, { desc = "Toggle Theme" })
-map("n", "<leader>tq", utils.toggle_qf, { desc = "Toggle Quickfix" })
+-- Toggle: UI
+map("n", "<leader>c", utils.toggle_qf, { desc = "Toggle Quickfix" })
+map("n", "<leader>tt", "<Cmd>vertical terminal<CR>", { desc = "Open Terminal" })
 
--- Toggle Options
+-- Toggle: Options
 map("n", "\\i", utils.toggle_inlay_hints, { desc = "Toggle Inlay hints" })
 map("n", "\\n", "<Cmd>setlocal number!<CR>", { desc = "Toggle Number" })
 map("n", "\\r", "<Cmd>setlocal relativenumber!<CR>", { desc = "Toggle Relative Number" })
 map("n", "\\s", "<Cmd>setlocal spell!<CR>", { desc = "Toggle Spell" })
+map("n", "\\t", utils.toggle_theme, { desc = "Toggle Theme" })
 map("n", "\\w", "<Cmd>setlocal wrap! wrap?<CR>", { desc = "Toggle Wrap" })
 
 -- Show Tools
