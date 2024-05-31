@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 return {
   {
     "hrsh7th/nvim-cmp",
@@ -16,8 +17,21 @@ return {
       lspkind.init()
 
       local cmp = require("cmp")
+      local compare = require("cmp.config.compare")
 
       cmp.setup({
+        sorting = {
+          comparators = {
+            compare.offset,
+            compare.recently_used,
+            compare.score,
+            compare.exact,
+            compare.kind,
+            compare.locality,
+            compare.length,
+            compare.order,
+          },
+        },
         sources = {
           { name = "snippets" },
           { name = "nvim_lsp" },

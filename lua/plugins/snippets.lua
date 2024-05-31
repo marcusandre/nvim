@@ -1,11 +1,8 @@
 return {
   "garymjr/nvim-snippets",
-  -- dependencies = { "rafamadriz/friendly-snippets" },
   lazy = false,
   opts = {
-    -- create_autocmd = true,
     create_cmp_source = true,
-    -- friendly_snippets = true,
     search_paths = {
       vim.fn.stdpath("config") .. "/lua/m/snippets",
     },
