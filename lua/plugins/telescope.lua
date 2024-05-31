@@ -3,7 +3,6 @@ return {
   tag = "0.1.6",
   dependencies = {
     "nvim-lua/plenary.nvim",
-    "nvim-telescope/telescope-ui-select.nvim",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
   },
   config = function()
@@ -18,14 +17,10 @@ return {
       },
       extensions = {
         fzf = {},
-        ["ui-select"] = {
-          require("telescope.themes").get_dropdown(),
-        },
       },
     })
 
     telesope.load_extension("fzf")
-    telesope.load_extension("ui-select")
 
     local builtin = require("telescope.builtin")
 
