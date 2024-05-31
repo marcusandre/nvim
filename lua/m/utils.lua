@@ -2,9 +2,7 @@ local M = {}
 
 --- Keymaps
 M.map = function(mode, lhs, rhs, opts)
-  if lhs == "" then
-    return
-  end
+  if lhs == "" then return end
   opts = vim.tbl_deep_extend("force", { silent = true }, opts or {})
   vim.keymap.set(mode, lhs, rhs, opts)
 end
@@ -28,17 +26,13 @@ end
 M.toggle_qf = function()
   local qf_exists = false
   for _, win in pairs(vim.fn.getwininfo()) do
-    if win["quickfix"] == 1 then
-      qf_exists = true
-    end
+    if win["quickfix"] == 1 then qf_exists = true end
   end
   if qf_exists == true then
     vim.cmd("cclose")
     return
   end
-  if not vim.tbl_isempty(vim.fn.getqflist()) then
-    vim.cmd("copen")
-  end
+  if not vim.tbl_isempty(vim.fn.getqflist()) then vim.cmd("copen") end
 end
 
 -- Buffers
@@ -56,9 +50,7 @@ M.delete_other_buffers = function()
   local buf_ids = vim.api.nvim_list_bufs()
 
   for _, buf_id in ipairs(buf_ids) do
-    if buf_id ~= current_buf_id then
-      M.delete_buffer(buf_id)
-    end
+    if buf_id ~= current_buf_id then M.delete_buffer(buf_id) end
   end
   vim.cmd("only")
 end
@@ -115,9 +107,7 @@ M.git_co_authors = function(opts)
         local insert = function()
           local picker = action_state.get_current_picker(bufnr)
           local selections = picker:get_multi_selection()
-          if next(selections) == nil then
-            selections = { picker:get_selection() }
-          end
+          if next(selections) == nil then selections = { picker:get_selection() } end
           actions.close(bufnr)
 
           local coauthors = { "", "" }

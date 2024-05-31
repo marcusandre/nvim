@@ -12,9 +12,7 @@ return {
       "<C-k>",
       function()
         if vim.snippet.active({ direction = 1 }) then
-          vim.schedule(function()
-            vim.snippet.jump(1)
-          end)
+          vim.schedule(function() vim.snippet.jump(1) end)
           return
         end
         return "<C-k>"
@@ -26,9 +24,7 @@ return {
     {
       "<C-k>",
       function()
-        vim.schedule(function()
-          vim.snippet.jump(1)
-        end)
+        vim.schedule(function() vim.snippet.jump(1) end)
       end,
       expr = true,
       silent = true,
@@ -38,9 +34,7 @@ return {
       "<C-j>",
       function()
         if vim.snippet.active({ direction = -1 }) then
-          vim.schedule(function()
-            vim.snippet.jump(-1)
-          end)
+          vim.schedule(function() vim.snippet.jump(-1) end)
           return
         end
         return "<C-j>"
