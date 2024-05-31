@@ -161,24 +161,29 @@ return {
     vim.api.nvim_create_autocmd("LspAttach", {
       callback = function(args)
         local bufnr = args.buf
-        local builtin = require("telescope.builtin")
         local map = require("m.utils").map
 
         vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
 
-        map("n", "gD", vim.lsp.buf.declaration, { buffer = 0 })
-        map("n", "gT", vim.lsp.buf.type_definition, { buffer = 0 })
         map("n", "<C-k>", vim.lsp.buf.signature_help, { buffer = 0 })
         map("n", "<leader>le", vim.diagnostic.open_float, { buffer = 0, desc = "Diagnostics" })
         map("n", "<leader>lr", vim.lsp.buf.rename, { buffer = 0 })
 
-        map("n", "gd", builtin.lsp_definitions, { buffer = 0 })
-        map("n", "gr", builtin.lsp_references, { buffer = 0 })
-        map("n", "<leader>ld", builtin.lsp_definitions, { buffer = 0, desc = "Definitions" })
-        map("n", "<leader>li", builtin.lsp_implementations, { buffer = 0, desc = "Implementations" })
-        map("n", "<leader>ls", builtin.lsp_document_symbols, { buffer = 0, desc = "Symbols" })
-        map("n", "<leader>lt", builtin.lsp_type_definitions, { buffer = 0, desc = "Type Definitions" })
-        map("n", "<leader>lw", builtin.lsp_dynamic_workspace_symbols, { buffer = 0, desc = "Workspace Symbols" })
+        map("n", "gD", "<Cmd>Pick lsp scope='declaration'<CR>", { buffer = 0 })
+        map("n", "<leader>ld", "<Cmd>Pick diagnostic<CR>", { buffer = 0, desc = "Diagnostics" })
+        map("n", "gd", "<Cmd>Pick lsp scope='definition'<CR>", { buffer = 0 })
+        map("n", "gr", "<Cmd>Pick lsp scope='references'<CR>", { buffer = 0 })
+        map("n", "<leader>li", "<Cmd>Pick lsp scope='implementation'<CR>", { buffer = 0, desc = "Implementations" })
+        map("n", "<leader>ls", "<Cmd>Pick lsp scope='document_symbol'<CR>", { buffer = 0, desc = "Symbols" })
+        map("n", "<leader>lt", "<Cmd>Pick lsp scope='type_definition'<CR>", { buffer = 0, desc = "Type Definitions" })
+        map("n", "<leader>lw", "<Cmd>Pick lsp scope='workspace_symbol'<CR>", { buffer = 0, desc = "Workspace Symbols" })
+
+        map(
+          "n",
+          "<leader>lx",
+          "<Cmd>lua vim.diagnostic.setloclist()<CR>",
+          { buffer = 0, desc = "Diagnostics (Loclist)" }
+        )
 
         map({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, { buffer = 0 })
 

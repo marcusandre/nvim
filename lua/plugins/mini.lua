@@ -1,7 +1,12 @@
 return {
   "echasnovski/mini.nvim",
+  dependencies = { "nvim-tree/nvim-web-devicons" },
   version = false,
   config = function()
+    local map = require("m.utils").map
+    local pick_modified_untracked = require("m.utils").pick_changed_files
+
+    require("mini.extra").setup()
     require("mini.ai").setup()
     require("mini.bracketed").setup()
     require("mini.cursorword").setup()
@@ -17,18 +22,16 @@ return {
 
     MiniDiff.setup()
 
-    vim.keymap.set("n", "<leader>go", MiniDiff.toggle_overlay, { desc = "Toggle Overlay" })
+    map("n", "<leader>go", MiniDiff.toggle_overlay, { desc = "Toggle Overlay" })
 
     -- mini.bufremove
-    local utils = require("m.utils")
     local MiniBufremove = require("mini.bufremove")
 
     MiniBufremove.setup()
 
-    vim.keymap.set("n", "<leader>bd", MiniBufremove.delete, { desc = "Delete Buffer" })
-    vim.keymap.set("n", "<leader>bw", MiniBufremove.wipeout, { desc = "Wipeout Buffer" })
-    vim.keymap.set("n", "<leader>ba", utils.delete_all_buffers, { desc = "Delete All Buffers" })
-    vim.keymap.set("n", "<leader>bo", utils.delete_other_buffers, { desc = "Delete Other Buffers" })
+    map("n", "<leader>bd", MiniBufremove.delete, { desc = "Delete Buffer" })
+    map("n", "<leader>bw", MiniBufremove.wipeout, { desc = "Wipeout Buffer" })
+    map("n", "<leader>bo", "<Cmd>%bd|e#|bd#<CR>", { desc = "Delete Other Buffers" })
 
     -- mini.indentscope
     require("mini.indentscope").setup()
@@ -41,5 +44,26 @@ return {
         enable = false,
       },
     })
+
+    -- mini.pick
+    require("mini.pick").setup()
+
+    vim.ui.select = MiniPick.ui_select
+
+    MiniPick.registry.config = function()
+      return MiniPick.builtin.files(nil, { source = { cwd = vim.fn.stdpath("config") } })
+    end
+
+    map("n", "<leader>/", "<Cmd>Pick buf_lines scope='current'<CR>", { desc = "Search buffer" })
+    map("n", "<leader>fb", "<Cmd>Pick buffers<CR>", { desc = "Buffers" })
+    map("n", "<leader>fc", "<Cmd>Pick config<CR>", { desc = "Config" })
+    map("n", "<leader>fF", "<Cmd>Pick files<CR>", { desc = "Files" })
+    map("n", "<leader>ff", "<Cmd>Pick git_files<CR>", { desc = "Git files" })
+    map("n", "<leader>fg", "<Cmd>Pick grep_live<CR>", { desc = "Grep live" })
+    map("n", "<leader>fh", "<Cmd>Pick help<CR>", { desc = "Help" })
+    map("n", "<leader>fo", "<Cmd>Pick oldfiles<CR>", { desc = "Oldfiles" })
+    map("n", "<leader>fr", "<Cmd>Pick resume<CR>", { desc = "Resume" })
+    map("n", "<leader>fs", "<Cmd>Pick git_hunks<CR>", { desc = "Git hunks" })
+    map("n", "<leader>fS", pick_modified_untracked, { desc = "Git hunks" })
   end,
 }

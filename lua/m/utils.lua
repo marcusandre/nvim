@@ -35,24 +35,14 @@ M.toggle_qf = function()
   if not vim.tbl_isempty(vim.fn.getqflist()) then vim.cmd("copen") end
 end
 
--- Buffers
-M.delete_all_buffers = function()
-  local buf_ids = vim.api.nvim_list_bufs()
-
-  for _, buf_id in ipairs(buf_ids) do
-    M.delete_buffer(buf_id)
-  end
-  vim.cmd("only")
-end
-
-M.delete_other_buffers = function()
-  local current_buf_id = vim.api.nvim_get_current_buf()
-  local buf_ids = vim.api.nvim_list_bufs()
-
-  for _, buf_id in ipairs(buf_ids) do
-    if buf_id ~= current_buf_id then M.delete_buffer(buf_id) end
-  end
-  vim.cmd("only")
+-- Pickers
+M.pick_changed_files = function()
+  local local_opts = { command = { "git", "diff", "--name-only" } }
+  local source = {
+    name = "Git files (diff)",
+    show = function(buf_id, items, query) return MiniPick.default_show(buf_id, items, query, { show_icons = true }) end,
+  }
+  return MiniPick.builtin.cli(local_opts, { source = source })
 end
 
 -- Telescope
