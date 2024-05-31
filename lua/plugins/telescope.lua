@@ -10,9 +10,19 @@ return {
     local telesope = require("telescope")
 
     telesope.setup({
+      defaults = {
+        path_display = { "truncate" },
+      },
       pickers = {
         find_files = {
           hidden = true,
+        },
+        git_status = {
+          show_untracked = true,
+          layout_strategy = "vertical",
+        },
+        colorscheme = {
+          enable_preview = true,
         },
       },
       extensions = {
