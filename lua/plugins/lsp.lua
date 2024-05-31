@@ -72,6 +72,32 @@ return {
       },
 
       tsserver = {
+        settings = {
+          typescript = {
+            inlayHints = {
+              includeInlayEnumMemberValueHints = true,
+              includeInlayFunctionLikeReturnTypeHints = true,
+              includeInlayFunctionParameterTypeHints = true,
+              includeInlayParameterNameHints = "all",
+              includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+              includeInlayPropertyDeclarationTypeHints = true,
+              includeInlayVariableTypeHints = true,
+              includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+            },
+          },
+          javascript = {
+            inlayHints = {
+              includeInlayEnumMemberValueHints = true,
+              includeInlayFunctionLikeReturnTypeHints = true,
+              includeInlayFunctionParameterTypeHints = true,
+              includeInlayParameterNameHints = "all",
+              includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+              includeInlayPropertyDeclarationTypeHints = true,
+              includeInlayVariableTypeHints = true,
+              includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+            },
+          },
+        },
         on_attach = function(client)
           client.server_capabilities.documentFormattingProvider = false
           client.server_capabilities.documentRangeFormattingProvider = false
