@@ -4,10 +4,15 @@ return {
     -- Autoformatting Setup
     require("conform").setup({
       formatters_by_ft = {
+        ["terraform-vars"] = { "terraform_fmt" },
         fish = { "fish_indent" },
+        go = { "goimports", "gofumpt" },
         json = { "prettier" },
         lua = { "stylua" },
+        markdown = { { "prettierd", "prettier" }, "markdownlint", "markdown-toc" },
         sh = { "shfmt" },
+        terraform = { "terraform_fmt" },
+        tf = { "terraform_fmt" },
         typescript = { "eslint" },
       },
       format_on_save = {

@@ -132,6 +132,8 @@ return {
       "gofumpt",
       "goimports",
       "hadolint",
+      "markdown-toc",
+      "markdownlint",
       "prettier",
       "shfmt",
       "stylua",
