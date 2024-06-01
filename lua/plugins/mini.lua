@@ -33,9 +33,6 @@ return {
     map("n", "<leader>bw", MiniBufremove.wipeout, { desc = "Wipeout Buffer" })
     map("n", "<leader>bo", "<Cmd>%bd|e#|bd#<CR>", { desc = "Delete Other Buffers" })
 
-    -- mini.indentscope
-    require("mini.indentscope").setup()
-
     -- mini.notify
     local MiniNotify = require("mini.notify")
 
