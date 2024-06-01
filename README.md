@@ -6,6 +6,6 @@ This repository contains my personal [Neovim](https://neovim.io/) configuration.
 
 ## Installation
 
-```
-$ nvim --headless "+Lazy! sync" +qa
+```sh
+nvim --headless "+Lazy! sync" +qa
 ```
