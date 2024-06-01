@@ -14,23 +14,16 @@ return {
       vim.opt.completeopt = { "menu", "menuone", "preview" }
 
       local lspkind = require("lspkind")
+      local cmp = require("cmp")
+
       lspkind.init()
 
-      local cmp = require("cmp")
-      local compare = require("cmp.config.compare")
-
       cmp.setup({
-        sorting = {
-          comparators = {
-            compare.offset,
-            compare.recently_used,
-            compare.score,
-            compare.exact,
-            compare.kind,
-            compare.locality,
-            compare.length,
-            compare.order,
-          },
+        completion = {
+          completeopt = "menu,menuone,noinsert",
+        },
+        experimental = {
+          ghost_text = true,
         },
         sources = {
           { name = "snippets" },
@@ -40,6 +33,7 @@ return {
         },
         mapping = {
           ["<C-Space>"] = cmp.mapping.complete(),
+          ["<C-e>"] = cmp.mapping.abort(),
           ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
           ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
           ["<C-y>"] = cmp.mapping(
