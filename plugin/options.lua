@@ -27,3 +27,5 @@ vim.opt.cursorline = true
 vim.opt.wrap = false
 
 vim.opt.shell = "/bin/bash"
+
+vim.opt.conceallevel = 2
