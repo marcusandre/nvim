@@ -51,6 +51,12 @@ return {
       return MiniPick.builtin.files(nil, { source = { cwd = vim.fn.stdpath("config") } })
     end
 
+    if vim.env.OBSIDIAN_VAULT_DIR then
+      MiniPick.registry.notes = function()
+        return MiniPick.builtin.files(nil, { source = { cwd = vim.env.OBSIDIAN_VAULT_DIR } })
+      end
+    end
+
     map("n", "<leader>/", "<Cmd>Pick buf_lines scope='current'<CR>", { desc = "Search buffer" })
     map("n", "<leader>fb", "<Cmd>Pick buffers<CR>", { desc = "Buffers" })
     map("n", "<leader>fc", "<Cmd>Pick config<CR>", { desc = "Config" })
@@ -58,6 +64,7 @@ return {
     map("n", "<leader>fF", "<Cmd>Pick files<CR>", { desc = "Files" })
     map("n", "<leader>fg", "<Cmd>Pick grep_live<CR>", { desc = "Grep live" })
     map("n", "<leader>fh", "<Cmd>Pick help<CR>", { desc = "Help" })
+    map("n", "<leader>fn", "<Cmd>Pick notes<CR>", { desc = "Notes" })
     map("n", "<leader>fr", "<Cmd>Pick resume<CR>", { desc = "Resume" })
     map("n", "<leader>fs", "<Cmd>Pick git_hunks<CR>", { desc = "Git hunks" })
     map("n", "<leader>fS", pick_modified_untracked, { desc = "Git hunks" })
