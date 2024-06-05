@@ -37,6 +37,7 @@ end
 
 -- Pickers
 M.pick_changed_files = function()
+  local MiniPick = require("mini.pick")
   local local_opts = { command = { "git", "diff", "--name-only" } }
   local source = {
     name = "Git files (diff)",

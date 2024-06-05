@@ -33,6 +33,9 @@ return {
     map("n", "<leader>bw", MiniBufremove.wipeout, { desc = "Wipeout Buffer" })
     map("n", "<leader>bo", "<Cmd>%bd|e#|bd#<CR>", { desc = "Delete Other Buffers" })
 
+    -- mini.hues
+    vim.cmd([[colorscheme minihues-nightfox]])
+
     -- mini.notify
     local MiniNotify = require("mini.notify")
 
