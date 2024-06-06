@@ -30,6 +30,7 @@ return {
           { name = "nvim_lsp" },
           { name = "path" },
           { name = "buffer" },
+          { name = "lazydev", group_index = 0 },
         },
         mapping = {
           ["<C-Space>"] = cmp.mapping.complete(),
