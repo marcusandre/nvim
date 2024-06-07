@@ -10,7 +10,6 @@ return {
 
     local map = require("m.utils").map
     vim.api.nvim_create_autocmd("FileType", {
-
       pattern = { "fugitiveblame", "fugitive" },
       callback = function()
         map("n", "q", "<Cmd>quit<CR>", {

@@ -36,17 +36,5 @@
   "keymap (multi-mode)": {
     "body": "keymap({ \"n\", \"x\" }, \"${1:lhs}\", \"${2:rhs}\", { desc = \"${3:desc}\" })",
     "prefix": "keymap (multi-mode)"
-  },
-  "plugin spec (lazy.nvim)": {
-    "body": [
-      "{",
-      "\t\"$1\",",
-      "\t${2|event = \"VeryLazy\",event = \"LspAttach\",lazy = true,cmd = \"\"|},",
-      "\topts = {",
-      "\t\t$0",
-      "\t},",
-      "},"
-    ],
-    "prefix": "plugin spec (lazy.nvim)"
   }
 }

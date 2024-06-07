@@ -1,3 +1,6 @@
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 vim.opt.inccommand = "split"
 
 vim.opt.smartcase = true
