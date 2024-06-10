@@ -18,7 +18,7 @@ return {
   ["nvim-cmp"] = "a110e12d0b58eefcf5b771f533fc2cf3050680ac",
   ["nvim-coverage"] = "aa4b4400588e2259e87e372b1e4e90ae13cf5a39",
   ["nvim-lspconfig"] = "4d38bece98300e3e5cd24a9aa0d0ebfea4951c16",
-  ["nvim-snippets"] = "cff37a199a92f3c3cd52bb1593a7d01669b35d23",
+  ["nvim-snippets"] = "5c978b3ba0c504dc9f94ca93d17029f26064d229",
   ["nvim-treesitter"] = "b47dde81a0a4b9b62e9a73a71ff0df2202323dd9",
   ["nvim-treesitter-textobjects"] = "34867c69838078df7d6919b130c0541c0b400c47",
   ["nvim-vtsls"] = "719fabc328c48fa03b1f3373205fcd1f60d21dc2",
