@@ -227,19 +227,19 @@ if Config.notes_source then
 end
 
 -- Interactive overview over keymaps
-later(function()
-  add("linrongbin16/gitlinker.nvim")
-  require("gitlinker").setup({
-    router = {
-      browse = {
-        ["^github"] = require("gitlinker.routers").github_browse,
-      },
-      blame = {
-        ["^github"] = require("gitlinker.routers").github_blame,
-      },
-    },
-  })
-end)
+-- later(function()
+--   add("linrongbin16/gitlinker.nvim")
+--   require("gitlinker").setup({
+--     router = {
+--       browse = {
+--         ["^github"] = require("gitlinker.routers").github_browse,
+--       },
+--       blame = {
+--         ["^github"] = require("gitlinker.routers").github_blame,
+--       },
+--     },
+--   })
+-- end)
 
 -- Interactive overview over keymaps
 later(function()
