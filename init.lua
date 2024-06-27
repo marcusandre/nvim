@@ -43,7 +43,8 @@ now(function()
   add("folke/tokyonight.nvim")
   add("EdenEast/nightfox.nvim")
 
-  vim.cmd([[colorscheme minihues-nightfox]])
+  -- vim.cmd([[colorscheme minihues-nightfox]])
+  vim.cmd([[colorscheme duskfox]])
 end)
 
 -- Setup mini plugins (Stage 1)
