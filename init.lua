@@ -44,7 +44,7 @@ now(function()
   add("EdenEast/nightfox.nvim")
 
   -- vim.cmd([[colorscheme minihues-nightfox]])
-  vim.cmd([[colorscheme nightfox]])
+  vim.cmd([[colorscheme duskfox]])
 end)
 
 -- Setup mini plugins (Stage 1)
