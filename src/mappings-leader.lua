@@ -35,6 +35,8 @@ nmap_leader("fR", "<Cmd>Pick resume<CR>", "Resume")
 nmap_leader("fr", '<Cmd>Pick lsp scope="references"<CR>', "References (LSP)")
 nmap_leader("fS", '<Cmd>Pick lsp scope="workspace_symbol"<CR>', "Symbols workspace (LSP)")
 nmap_leader("fs", '<Cmd>Pick lsp scope="document_symbol"<CR>', "Symbols buffer (LSP)")
+nmap_leader("fo", function() require("mini.extra").pickers.oldfiles({ current_dir = true }) end, "Oldfiles (cwd)")
+nmap_leader("fO", "<Cmd>Pick oldfiles<CR>", "Oldfiles")
 nmap_leader("fv", '<Cmd>Pick visit_paths cwd=""<CR>', "Visit paths (all)")
 nmap_leader("fV", "<Cmd>Pick visit_paths<CR>", "Visit paths (cwd)")
 
