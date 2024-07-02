@@ -173,12 +173,6 @@ end)
 
 -- Git clients
 later(function() add("tpope/vim-fugitive") end)
-later(function()
-  add({
-    source = "kdheepak/lazygit.nvim",
-    depends = { "nvim-lua/plenary.nvim" },
-  })
-end)
 
 -- Testing
 later(function()

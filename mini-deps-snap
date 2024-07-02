@@ -7,7 +7,6 @@ return {
   ["dressing.nvim"] = "6741f1062d3dc6e4755367a7e9b347b553623f04",
   ["indent-blankline.nvim"] = "65e20ab94a26d0e14acac5049b8641336819dfc7",
   ["lazydev.nvim"] = "78d8a11fbd02ad4eafa07dd8a43a959a69fb3bf8",
-  ["lazygit.nvim"] = "ad3e1ea592f9d13e86e0d4e850224d9d78069508",
   ["lspkind.nvim"] = "1735dd5a5054c1fb7feaf8e8658dbab925f4f0cf",
   ["mason-lspconfig.nvim"] = "37a336b653f8594df75c827ed589f1c91d91ff6c",
   ["mason-tool-installer.nvim"] = "c5e07b8ff54187716334d585db34282e46fa2932",
