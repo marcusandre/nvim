@@ -49,8 +49,8 @@ nmap_leader("gL", "<Cmd>Git log --oneline --follow -- %<CR>", "Log Buffer")
 nmap_leader("gl", "<Cmd>Git log --oneline<CR>", "Log")
 nmap_leader("go", "<Cmd>lua MiniDiff.toggle_overlay()<CR>", "Toggle overlay")
 
-map({ "n", "v" }, "gy", "<Cmd>GitLink<CR>", { desc = "Yank git link" })
-map({ "n", "v" }, "gY", "<Cmd>GitLink!<CR>", { desc = "Open git link" })
+map({ "n", "v" }, "<leader>gy", "<Cmd>GitLink<CR>", { desc = "Yank git link" })
+map({ "n", "v" }, "<leader>gY", "<Cmd>GitLink!<CR>", { desc = "Open git link" })
 
 map("n", "g<space>", ":Git<Space>", { desc = "Git Command" })
 map("n", "gX", "<Cmd>Gread<CR>", { desc = "Git Reset Buffer" })
