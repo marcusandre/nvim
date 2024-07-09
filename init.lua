@@ -48,8 +48,6 @@ now(function()
 end)
 
 -- Setup mini plugins (Stage 1)
-add({ name = "mini.nvim", checkout = "HEAD" })
-
 now(function() require("mini.notify").setup() end)
 now(function() require("mini.statusline").setup() end)
 now(function() require("mini.tabline").setup() end)
@@ -73,6 +71,7 @@ later(function() require("mini.splitjoin").setup() end)
 later(function() require("mini.surround").setup() end)
 later(function() require("mini.trailspace").setup() end)
 later(function() require("mini.visits").setup() end)
+later(function() require("mini.icons").setup() end)
 
 later(function()
   require("mini.pick").setup()
@@ -89,9 +88,6 @@ later(function()
     end
   end
 end)
-
--- Icons
-now(function() add("nvim-tree/nvim-web-devicons") end)
 
 later(function()
   local ts_spec = {
@@ -162,7 +158,7 @@ end)
 now(function()
   add({
     source = "stevearc/oil.nvim",
-    depends = { "nvim-tree/nvim-web-devicons" },
+    -- depends = { "nvim-tree/nvim-web-devicons" },
   })
   require("oil").setup({
     default_file_explorer = true,
