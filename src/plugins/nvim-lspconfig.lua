@@ -61,6 +61,7 @@ local servers = {
           completion = {
             enableServerSideFuzzyMatch = true,
           },
+          maxInlayHintLength = 30,
         },
       },
       typescript = {
