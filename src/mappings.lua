@@ -4,7 +4,7 @@ local map = Config.map
 map("n", "n", "nzz")
 map("n", "N", "Nzz")
 map("i", "kj", "<ESC>", { desc = "Quit input mode" })
-map("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+map("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- Stay in indent mode
 map("v", "<", "<gv")
