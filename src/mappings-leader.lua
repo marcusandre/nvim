@@ -76,14 +76,14 @@ nmap_leader("ot", "<Cmd>ObsidianToday<CR>", "Today")
 nmap_leader("oT", "<Cmd>ObsidianYesterday<CR>", "Yesterday")
 
 -- t is for 'test'
-nmap_leader("tF", "<Cmd>TestFile -strategy=make | copen<CR>", "File (quickfix)")
+nmap_leader("tF", "<Cmd>TestFile --coverage<CR>", "File (quickfix)")
 nmap_leader("tf", "<Cmd>TestFile<CR>", "File")
-nmap_leader("tL", "<Cmd>TestLast -strategy=make | copen<CR>", "Last (quickfix)")
+nmap_leader("tL", "<Cmd>TestLast --coverage<CR>", "Last (quickfix)")
 nmap_leader("tl", "<Cmd>TestLast<CR>", "Last")
-nmap_leader("tN", "<Cmd>TestNearest -strategy=make | copen<CR>", "Nearest (quickfix)")
+nmap_leader("tN", "<Cmd>TestNearest --coverage<CR>", "Nearest (quickfix)")
 nmap_leader("tn", "<Cmd>TestNearest<CR>", "Nearest")
-nmap_leader("tS", "<Cmd>TestSuite -strategy=make | copen<CR>", "Suite (quickfix)")
-nmap_leader("ts", "<Cmd>TestSuite<CR>", "Suite")
+-- nmap_leader("tS", "<Cmd>TestSuite --coverage<CR>", "Suite (quickfix)")
+-- nmap_leader("ts", "<Cmd>TestSuite<CR>", "Suite")
 
 -- v is for 'visits'
 nmap_leader("vv", '<Cmd>lua MiniVisits.add_label("core")<CR>', 'Add "core" label')
