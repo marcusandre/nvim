@@ -68,7 +68,6 @@ later(function() require("mini.extra").setup() end)
 later(function() require("mini.move").setup() end)
 later(function() require("mini.pairs").setup() end)
 later(function() require("mini.splitjoin").setup() end)
-later(function() require("mini.surround").setup() end)
 later(function() require("mini.trailspace").setup() end)
 later(function() require("mini.visits").setup() end)
 later(function() require("mini.icons").setup() end)
@@ -120,6 +119,12 @@ end)
 later(function()
   add("folke/lazydev.nvim")
   require("lazydev").setup()
+end)
+
+-- Formatting
+later(function()
+  add("kylechui/nvim-surround")
+  require("nvim-surround").setup()
 end)
 
 -- Formatting
