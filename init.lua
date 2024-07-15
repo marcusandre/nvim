@@ -42,9 +42,13 @@ now(function() source("mappings-leader.lua") end)
 now(function()
   add("folke/tokyonight.nvim")
   add("EdenEast/nightfox.nvim")
+  add("ellisonleao/gruvbox.nvim")
 
-  -- vim.cmd([[colorscheme minihues-nightfox]])
-  vim.cmd([[colorscheme tokyonight]])
+  -- require("gruvbox").setup({
+  --   contrast = "hard", -- can be "hard", "soft" or empty string
+  -- })
+
+  vim.cmd([[colorscheme gruvbox]])
 end)
 
 -- Setup mini plugins (Stage 1)
