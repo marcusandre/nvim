@@ -77,22 +77,6 @@ later(function() require("mini.visits").setup() end)
 later(function() require("mini.icons").setup() end)
 
 later(function()
-  require("mini.pick").setup()
-
-  vim.ui.select = MiniPick.ui_select
-
-  MiniPick.registry.config = function()
-    return MiniPick.builtin.files(nil, { source = { cwd = vim.fn.stdpath("config") } })
-  end
-
-  if vim.env.OBSIDIAN_VAULT_DIR then
-    MiniPick.registry.notes = function()
-      return MiniPick.builtin.files(nil, { source = { cwd = vim.env.OBSIDIAN_VAULT_DIR } })
-    end
-  end
-end)
-
-later(function()
   local ts_spec = {
     source = "nvim-treesitter/nvim-treesitter",
     checkout = "master",
@@ -125,7 +109,7 @@ later(function()
   require("lazydev").setup()
 end)
 
--- Formatting
+-- Surroundings
 later(function()
   add("kylechui/nvim-surround")
   require("nvim-surround").setup()
@@ -135,6 +119,12 @@ end)
 later(function()
   add("stevearc/conform.nvim")
   source("plugins/conform.lua")
+end)
+
+-- Fuzzy finder and picker
+later(function()
+  add("ibhagwan/fzf-lua")
+  require("fzf-lua").setup()
 end)
 
 -- TypeScript companion

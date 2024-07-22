@@ -145,27 +145,27 @@ local disable_semantic_tokens = {
 
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
+    local nmap_leader = Config.nmap_leader
     local bufnr = args.buf
     local map = Config.map
 
     vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
 
     map("n", "<C-k>", vim.lsp.buf.signature_help, { buffer = 0 })
-    map("n", "<leader>le", vim.diagnostic.open_float, { buffer = 0, desc = "Diagnostics" })
-    map("n", "<leader>lr", vim.lsp.buf.rename, { buffer = 0 })
-
-    map("n", "gD", "<Cmd>Pick lsp scope='declaration'<CR>", { buffer = 0 })
-    map("n", "<leader>ld", "<Cmd>Pick diagnostic<CR>", { buffer = 0, desc = "Diagnostics" })
-    map("n", "gd", "<Cmd>Pick lsp scope='definition'<CR>", { buffer = 0 })
-    map("n", "gr", "<Cmd>Pick lsp scope='references'<CR>", { buffer = 0 })
-    map("n", "<leader>li", "<Cmd>Pick lsp scope='implementation'<CR>", { buffer = 0, desc = "Implementations" })
-    map("n", "<leader>ls", "<Cmd>Pick lsp scope='document_symbol'<CR>", { buffer = 0, desc = "Symbols" })
-    map("n", "<leader>lt", "<Cmd>Pick lsp scope='type_definition'<CR>", { buffer = 0, desc = "Type Definitions" })
-    map("n", "<leader>lw", "<Cmd>Pick lsp scope='workspace_symbol'<CR>", { buffer = 0, desc = "Workspace Symbols" })
-
-    map("n", "<leader>lx", "<Cmd>lua vim.diagnostic.setloclist()<CR>", { buffer = 0, desc = "Diagnostics (Loclist)" })
+    map("n", "gD", "<Cmd>FzfLua lsp_declarations<CR>", { buffer = 0 })
+    map("n", "gd", "<Cmd>FzfLua lsp_definitions<CR>", { buffer = 0 })
+    map("n", "gr", "<Cmd>FzfLua lsp_references<CR>", { buffer = 0 })
 
     map({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, { buffer = 0 })
+
+    nmap_leader("<leader>ld", "<Cmd>FzfLua lsp_document_diagnostics<CR>", "Diagnostics", { buffer = 0 })
+    nmap_leader("<leader>le", vim.diagnostic.open_float, "Diagnostics", { buffer = 0 })
+    nmap_leader("<leader>li", "<Cmd>FzfLua lsp_implementations<CR>", "Implementations", { buffer = 0 })
+    nmap_leader("<leader>lr", vim.lsp.buf.rename, "Rename", { buffer = 0 })
+    nmap_leader("<leader>ls", "<Cmd>FzfLua lsp_document_symbols<CR>", "Symbols (buffer)", { buffer = 0 })
+    nmap_leader("<leader>lt", "<Cmd>FzfLua lsp_typedefs<CR>", "Type Definitions", { buffer = 0 })
+    nmap_leader("<leader>lw", "<Cmd>FzfLua lsp_live_workspace_symbols<CR>", "Symbols (workspace)", { buffer = 0 })
+    nmap_leader("<leader>lx", "<Cmd>lua vim.diagnostic.setloclist()<CR>", "Diagnostics (LocList)", { buffer = 0 })
 
     local filetype = vim.bo[bufnr].filetype
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id), "must have valid client")
