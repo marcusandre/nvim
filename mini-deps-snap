@@ -12,6 +12,7 @@ return {
   ["indent-blankline.nvim"] = "65e20ab94a26d0e14acac5049b8641336819dfc7",
   ["lazydev.nvim"] = "399299ca570aa82c13ee4fb1bd1304ce6baf7f05",
   ["lspkind.nvim"] = "1735dd5a5054c1fb7feaf8e8658dbab925f4f0cf",
+  ["markdown.nvim"] = "5e4e33102b784353998c83d57dbacea4db71d55b",
   ["mason-lspconfig.nvim"] = "58bc9119ca273c0ce5a66fad1927ef0f617bd81b",
   ["mason-tool-installer.nvim"] = "c5e07b8ff54187716334d585db34282e46fa2932",
   ["mason.nvim"] = "e2f7f9044ec30067bc11800a9e266664b88cda22",

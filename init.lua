@@ -223,6 +223,12 @@ if Config.notes_source then
   end)
 end
 
+-- Markdown
+later(function()
+  add("MeanderingProgrammer/markdown.nvim")
+  require("render-markdown").setup()
+end)
+
 -- Interactive overview over keymaps
 later(function()
   add("linrongbin16/gitlinker.nvim")
