@@ -127,12 +127,6 @@ later(function()
   require("fzf-lua").setup()
 end)
 
--- TypeScript companion
-later(function()
-  add("yioneko/nvim-vtsls")
-  source("plugins/nvim-vtsls.lua")
-end)
-
 -- Completion
 later(function()
   add({
@@ -200,6 +194,18 @@ later(function()
       enabled = false,
     },
   })
+end)
+
+-- Find and Replace
+later(function()
+  add("MagicDuck/grug-far.nvim")
+  require("grug-far").setup()
+end)
+
+-- TypeScript companion
+later(function()
+  add("yioneko/nvim-vtsls")
+  source("plugins/nvim-vtsls.lua")
 end)
 
 -- Obsidian notes
