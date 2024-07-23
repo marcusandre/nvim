@@ -196,6 +196,12 @@ later(function()
   })
 end)
 
+-- LSP lines
+now(function()
+  add("https://git.sr.ht/~whynothugo/lsp_lines.nvim")
+  require("lsp_lines").setup()
+end)
+
 -- Find and Replace
 later(function()
   add("MagicDuck/grug-far.nvim")
