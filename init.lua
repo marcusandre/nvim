@@ -48,7 +48,7 @@ now(function()
   --   contrast = "hard", -- can be "hard", "soft" or empty string
   -- })
 
-  vim.cmd([[colorscheme gruvbox]])
+  vim.cmd([[colorscheme tokyonight-moon]])
 end)
 
 -- Setup mini plugins (Stage 1)
