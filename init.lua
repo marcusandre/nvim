@@ -56,12 +56,6 @@ now(function() require("mini.notify").setup() end)
 now(function() require("mini.statusline").setup() end)
 now(function() require("mini.tabline").setup() end)
 
-now(function()
-  require("mini.diff").setup()
-  local rhs = function() return MiniDiff.operator("yank") .. "gh" end
-  vim.keymap.set("n", "ghy", rhs, { expr = true, remap = true, desc = "Copy hunk's reference line" })
-end)
-
 -- Setup mini plugins (Stage 2)
 later(function() require("mini.ai").setup() end)
 later(function() require("mini.align").setup() end)
@@ -125,6 +119,12 @@ end)
 later(function()
   add("ibhagwan/fzf-lua")
   require("fzf-lua").setup()
+end)
+
+-- Git hunks
+now(function()
+  add("lewis6991/gitsigns.nvim")
+  source("plugins/gitsigns.lua")
 end)
 
 -- Completion

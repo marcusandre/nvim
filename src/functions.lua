@@ -10,6 +10,12 @@ Config.nmap_leader = function(suffix, rhs, desc, opts)
   Config.map("n", "<Leader>" .. suffix, rhs, opts)
 end
 
+Config.vmap_leader = function(suffix, rhs, desc, opts)
+  opts = opts or {}
+  opts.desc = desc
+  Config.map("v", "<Leader>" .. suffix, rhs, opts)
+end
+
 Config.xmap_leader = function(suffix, rhs, desc, opts)
   opts = opts or {}
   opts.desc = desc
