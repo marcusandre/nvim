@@ -149,10 +149,7 @@ end)
 
 -- File explorer
 now(function()
-  add({
-    source = "stevearc/oil.nvim",
-    -- depends = { "nvim-tree/nvim-web-devicons" },
-  })
+  add({ source = "stevearc/oil.nvim" })
   require("oil").setup({
     default_file_explorer = true,
     view_options = {
@@ -190,16 +187,10 @@ end)
 later(function()
   add("stevearc/dressing.nvim")
   require("dressing").setup({
-    select = {
-      enabled = false,
-    },
+    -- select = {
+    --   enabled = false,
+    -- },
   })
-end)
-
--- LSP lines
-now(function()
-  add("https://git.sr.ht/~whynothugo/lsp_lines.nvim")
-  require("lsp_lines").setup()
 end)
 
 -- Find and Replace
